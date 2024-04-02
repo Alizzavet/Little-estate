@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc707a0b88cb554d86a64c87c6fe441, type: 3}
-  m_Name: OakSeed
+  m_Script: {fileID: 11500000, guid: fa180933b3d9c994da612014f2afcd77, type: 3}
+  m_Name: OakMature
   m_EditorClassIdentifier: 
-  _stageName: 0
-  _sprite: {fileID: 21300000, guid: 11277a3f23988ec47908362d708edaa8, type: 3}
-  _priceCost: 20
+  _stageName: 3
+  _sprite: {fileID: 8287102861560281953, guid: 157cbc340d2b7e64ab85168e80e95550, type: 3}
+  _priceCost: 25
+  _timeToNextStage: 0
+  _lootName: 
+  _minLootCount: 1
+  _maxLootCount: 1

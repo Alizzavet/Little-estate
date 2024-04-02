@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88119d050a2e6a142bdd53599bf27f66, type: 3}
   m_Name: Oak
   m_EditorClassIdentifier: 
-  _seedStageConfig: {fileID: 0}
+  _seedStageConfig: {fileID: 11400000, guid: c798bed21f7a3f74991f148fb7a79ec2, type: 2}
   _seedlingStageConfig: {fileID: 0}
   _saplingStageConfig: {fileID: 0}
-  _matureStageConfig: {fileID: 0}
+  _matureStageConfig: {fileID: 11400000, guid: dae4eab7f4c77414e9d702bf61026674, type: 2}
+  _shopItemName: "\u0414\u0443\u0431"
+  _shopDescription: "\u041C\u043E\u0443\u0447\u0438\u0439 \u0438 \u043D\u0435 \u043A\u043E\u043B\u044E\u0447\u0438\u0439"

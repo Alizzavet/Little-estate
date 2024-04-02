@@ -555,6 +555,7 @@ GameObject:
   - component: {fileID: 4266364980278657119}
   - component: {fileID: 7533361163992687235}
   - component: {fileID: 2469185525197053128}
+  - component: {fileID: 6511334613297610446}
   m_Layer: 5
   m_Name: ShopItemBar
   m_TagString: Untagged
@@ -626,6 +627,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6511334613297610446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848000918892852687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d3c22360f6ca143953de1446fdf8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemIcon: {fileID: 1747162159395444824}
+  _itemName: {fileID: 1403265307435258216}
+  _description: {fileID: 3645951279014917757}
+  _cost: {fileID: 89694425719428251}
 --- !u!1 &7939576023763731144
 GameObject:
   m_ObjectHideFlags: 0
