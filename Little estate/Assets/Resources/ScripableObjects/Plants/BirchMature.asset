@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BirchMature
   m_EditorClassIdentifier: 
   _stageName: 0
-  _sprite: {fileID: 21300000, guid: d9885e1e9e09a99449d15a0e2403a779, type: 3}
+  _sprite: {fileID: 21300000, guid: 11277a3f23988ec47908362d708edaa8, type: 3}
   _priceCost: 0
   _timeToNextStage: 0
   _lootName: 
