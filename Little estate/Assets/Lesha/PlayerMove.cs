@@ -29,7 +29,10 @@ public class PlayerMove : MonoBehaviour, IInputable
         var colliders = Physics.OverlapSphere(_jumperPos.position, _radius, groundLayer);
         isGround = colliders.Length > 0;
         
-        _rb.AddForce(_movementVector.normalized * _speed, ForceMode.Acceleration);
+        /*_rb.AddForce(_movementVector.normalized * _speed, ForceMode.Acceleration);*/
+
+        var horizontalVelocity = Vector3.Lerp(_rb.velocity, _movementVector.normalized * _speed, 0.5f);
+        _rb.velocity = new Vector3(horizontalVelocity.x, _rb.velocity.y, horizontalVelocity.z);
     }
     
 
