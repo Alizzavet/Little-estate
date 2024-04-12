@@ -22,6 +22,8 @@ public class PlayerMove : MonoBehaviour, IInputable
     private void OnEnable()
     {
         InputSystem.Instance.SetInput(this);
+        CameraFollowController.Instance.SetPlayer(transform);
+        CameraFollowController.Instance.MoveToPlayer();
     }
 
     private void FixedUpdate()
