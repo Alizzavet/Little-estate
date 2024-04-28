@@ -1,0 +1,1081 @@
+fileFormatVersion: 2
+guid: 7ffd608834e83b042b39597e169315d4
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BeatPlatSprites01_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 7140
+        width: 576
+        height: 1036
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed8d669e64c17f4f94cb36ac315fa1d
+      internalID: -2105634827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_1
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 7204
+        width: 344
+        height: 984
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce517960126d96843b4efa48e6b4a14b
+      internalID: -1787180308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_2
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 7260
+        width: 348
+        height: 928
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45bb133097bd8743b0aff2588e745c9
+      internalID: -605821162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_3
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 7308
+        width: 576
+        height: 880
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a29724d7c570a4a837a03f783b0ed4
+      internalID: -769491065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_4
+      rect:
+        serializedVersion: 2
+        x: 2164
+        y: 7380
+        width: 324
+        height: 812
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cede85bee63fe54984ac7735af3f521
+      internalID: 17413993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_5
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 7284
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57a8ff95c78fc004bb28ef0ae8198c12
+      internalID: -139795740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_6
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 6488
+        width: 320
+        height: 808
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b9d646a5d10e34448d3593a5a127a1d
+      internalID: -530521266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_7
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 6104
+        width: 460
+        height: 1028
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6655ed648d764584292fe761e6f58337
+      internalID: 286672786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_8
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 6148
+        width: 340
+        height: 984
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c71e41b2cb489b644846c376f59ec6a1
+      internalID: -720909957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_9
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 6256
+        width: 304
+        height: 944
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e0584d85623b524c8e8c3917e8ff4fe
+      internalID: 1285343531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_10
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 6268
+        width: 348
+        height: 928
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8248c68d8bd13414cb885397377acead
+      internalID: 818566063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_11
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 6348
+        width: 560
+        height: 908
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b55055be059baf4d91d41e016bf1b10
+      internalID: -356404770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_12
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 5068
+        width: 464
+        height: 1028
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5caec2dfda3fa674789f83d561440f94
+      internalID: 1665801961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_13
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 5104
+        width: 348
+        height: 992
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2837336e288a2f4cbbccc4e0578484b
+      internalID: -387415312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_14
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 5196
+        width: 512
+        height: 952
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a4475dc275e4a42bce0b955e5c253e
+      internalID: 1539458341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_15
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 5352
+        width: 576
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30a36de0f81bd9e4486d91ebdd015cc8
+      internalID: 739675329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_16
+      rect:
+        serializedVersion: 2
+        x: 1940
+        y: 5540
+        width: 304
+        height: 808
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d78c0542e3086c44cb5beec03e853b1c
+      internalID: -1079222344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_17
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4068
+        width: 348
+        height: 992
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92df3bf6437fd944986c28c9f5aff435
+      internalID: -1113803893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_18
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 4072
+        width: 332
+        height: 988
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de4bc4f5753fa084db2dc04784d75b93
+      internalID: -1884743049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_19
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 4156
+        width: 304
+        height: 948
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a180b8d7610286f4f9063fafb1f4b321
+      internalID: 1510186612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_20
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 4284
+        width: 636
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d1bf783e61987f429dc667f36f25a44
+      internalID: -1511935353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_21
+      rect:
+        serializedVersion: 2
+        x: 1644
+        y: 4548
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 794e80de55e22c14baba5bb1d94617eb
+      internalID: 1143550324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_22
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 4756
+        width: 304
+        height: 776
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fbb8adc5244431448717fcf687394fc
+      internalID: -870639491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3052
+        width: 592
+        height: 996
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 391c09503d22ea74aa3d20d60be9646f
+      internalID: -1054174250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_24
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 3104
+        width: 356
+        height: 964
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c511901c59d471d4a9a328e8f62667f1
+      internalID: 2062628124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_25
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 3232
+        width: 628
+        height: 916
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f73bdfafecb38ac468ae2d8150f3a53b
+      internalID: -459748586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_26
+      rect:
+        serializedVersion: 2
+        x: 1608
+        y: 3464
+        width: 304
+        height: 808
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bab6034d221560449e1b90a8529da32
+      internalID: 460931449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_27
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 3736
+        width: 672
+        height: 792
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9569ac1515b6d424e92ceb5417e99c0e
+      internalID: -1042604189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2064
+        width: 352
+        height: 980
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d79365c1707a4bb49834903058d600f8
+      internalID: 283198086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_29
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 2088
+        width: 528
+        height: 964
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e6fe29820972964b9b45c59aa5a7ea1
+      internalID: -705150161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_30
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 2176
+        width: 276
+        height: 932
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20c5d075a124c654cbd95f7f0118f8b8
+      internalID: 2127603356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_31
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 2376
+        width: 408
+        height: 840
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7dd3a6a7f27b742a6f0411e83e9141
+      internalID: 1010992675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_32
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 2416
+        width: 308
+        height: 808
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9a6cc5963fc9640b117804a69d06b8
+      internalID: 1628108029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_33
+      rect:
+        serializedVersion: 2
+        x: 1900
+        y: 2656
+        width: 644
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d60c90dcfc552304c844a2359e7a2b9f
+      internalID: 73019251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1076
+        width: 344
+        height: 984
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04bdedc80f9c5034fa3967bde931e4a0
+      internalID: -1182761779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_35
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 1092
+        width: 368
+        height: 960
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2753140fe611cc3498ba9f4ab6db4fb9
+      internalID: -2058081582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_36
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 1152
+        width: 264
+        height: 932
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 029b1fd09fc55bc4eb5deb18b2253570
+      internalID: -1707133740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_37
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 1308
+        width: 440
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22a30329327a8c944be07692efb431d8
+      internalID: -844131773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_38
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1536
+        width: 476
+        height: 824
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db2a4ef593a90124f8e13478f2216317
+      internalID: 946017996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 344
+        height: 976
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abafa5f5e33acba4e89bea9a3cdf3929
+      internalID: -1609075735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_40
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 156
+        width: 360
+        height: 928
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 809f1aca99607564ab765acd59f98ec2
+      internalID: 1178245710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_41
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 156
+        width: 360
+        height: 928
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23fa45f61906b694bb6fb0ec15b7d493
+      internalID: 1922393413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeatPlatSprites01_42
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 460
+        width: 400
+        height: 840
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50ffdb6c735985d43a28469d98a1640f
+      internalID: 1821805104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BeatPlatSprites01_0: -2105634827
+      BeatPlatSprites01_1: -1787180308
+      BeatPlatSprites01_10: 818566063
+      BeatPlatSprites01_11: -356404770
+      BeatPlatSprites01_12: 1665801961
+      BeatPlatSprites01_13: -387415312
+      BeatPlatSprites01_14: 1539458341
+      BeatPlatSprites01_15: 739675329
+      BeatPlatSprites01_16: -1079222344
+      BeatPlatSprites01_17: -1113803893
+      BeatPlatSprites01_18: -1884743049
+      BeatPlatSprites01_19: 1510186612
+      BeatPlatSprites01_2: -605821162
+      BeatPlatSprites01_20: -1511935353
+      BeatPlatSprites01_21: 1143550324
+      BeatPlatSprites01_22: -870639491
+      BeatPlatSprites01_23: -1054174250
+      BeatPlatSprites01_24: 2062628124
+      BeatPlatSprites01_25: -459748586
+      BeatPlatSprites01_26: 460931449
+      BeatPlatSprites01_27: -1042604189
+      BeatPlatSprites01_28: 283198086
+      BeatPlatSprites01_29: -705150161
+      BeatPlatSprites01_3: -769491065
+      BeatPlatSprites01_30: 2127603356
+      BeatPlatSprites01_31: 1010992675
+      BeatPlatSprites01_32: 1628108029
+      BeatPlatSprites01_33: 73019251
+      BeatPlatSprites01_34: -1182761779
+      BeatPlatSprites01_35: -2058081582
+      BeatPlatSprites01_36: -1707133740
+      BeatPlatSprites01_37: -844131773
+      BeatPlatSprites01_38: 946017996
+      BeatPlatSprites01_39: -1609075735
+      BeatPlatSprites01_4: 17413993
+      BeatPlatSprites01_40: 1178245710
+      BeatPlatSprites01_41: 1922393413
+      BeatPlatSprites01_42: 1821805104
+      BeatPlatSprites01_5: -139795740
+      BeatPlatSprites01_6: -530521266
+      BeatPlatSprites01_7: 286672786
+      BeatPlatSprites01_8: -720909957
+      BeatPlatSprites01_9: 1285343531
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

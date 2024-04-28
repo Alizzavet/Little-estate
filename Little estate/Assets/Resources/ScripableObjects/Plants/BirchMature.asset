@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa180933b3d9c994da612014f2afcd77, type: 3}
+  m_Name: BirchMature
+  m_EditorClassIdentifier: 
+  _stageName: 3
+  _sprite: {fileID: -877933732, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  _priceCost: 15
+  _dayToNextStage: 0
+  _lootName: 
+  _minLootCount: 1
+  _maxLootCount: 1

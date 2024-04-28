@@ -16,7 +16,7 @@ namespace UI
                 _instance = this;
         }
 
-        public static void OpenPage<T>(Page sender = null) where T : Page
+        public static T OpenPage<T>(Page sender = null) where T : Page
         {
             if (sender != null)
                 sender.Hide();
@@ -25,6 +25,8 @@ namespace UI
 
             page.transform.SetParent(_instance.transform, false);
             page.Show();
+
+            return page;
         }
 
         public static void ClosePage()
