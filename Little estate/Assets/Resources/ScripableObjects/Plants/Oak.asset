@@ -16,5 +16,5 @@ MonoBehaviour:
   _seedlingStageConfig: {fileID: 0}
   _saplingStageConfig: {fileID: 0}
   _matureStageConfig: {fileID: 11400000, guid: dae4eab7f4c77414e9d702bf61026674, type: 2}
-  _shopItemName: "\u0414\u0443\u0431"
-  _shopDescription: "\u041C\u043E\u0443\u0447\u0438\u0439 \u0438 \u043D\u0435 \u043A\u043E\u043B\u044E\u0447\u0438\u0439"
+  _shopItemName: Oak
+  _shopDescription: Powerful and not prickly

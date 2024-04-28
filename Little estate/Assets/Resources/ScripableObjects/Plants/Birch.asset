@@ -16,6 +16,5 @@ MonoBehaviour:
   _seedlingStageConfig: {fileID: 0}
   _saplingStageConfig: {fileID: 0}
   _matureStageConfig: {fileID: 11400000, guid: cba745bbd3e23384db787083fc1ea244, type: 2}
-  _shopItemName: "\u0411\u0435\u0440\u0435\u0437\u0430"
-  _shopDescription: "\u041C\u0438\u043B\u043E\u0435 \u0438 \u0440\u043E\u0434\u043D\u043E\u0435
-    \u0434\u0435\u0440\u0435\u0432\u0446\u0435"
+  _shopItemName: Birch
+  _shopDescription: Cute and dear tree

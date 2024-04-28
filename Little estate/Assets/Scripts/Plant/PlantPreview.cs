@@ -15,6 +15,7 @@ public class PlantPreview : MonoBehaviour
     {
         var mousePos = Input.mousePosition;
         mousePos.z = -_camera.transform.position.z;
+        
         var worldPos = _camera.ScreenToWorldPoint(mousePos);
         worldPos.x = Mathf.Round(worldPos.x * 2) / 2;
         worldPos.y = Mathf.Round(worldPos.y * 2) / 2;

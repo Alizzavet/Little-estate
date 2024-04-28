@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Pool;
 using UnityEngine;
 using UnityEngine.UI;
+using Pool;
 
 public class ShopManager : MonoBehaviour
 {
