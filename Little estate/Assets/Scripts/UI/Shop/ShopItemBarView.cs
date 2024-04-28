@@ -13,7 +13,7 @@ public class ShopItemBarView : MonoBehaviour
 
     public void SetData(PlantConfig plantConfig)
     {
-        _itemIcon.sprite = plantConfig.SeedStageConfig.Sprite;
+        _itemIcon.sprite = plantConfig.MatureStageConfig.Sprite;
         _cost.text = plantConfig.SeedStageConfig.PriseCost.ToString();
         _itemName.text = plantConfig.ShopItemName;
         _description.text = plantConfig.ShopDescription;

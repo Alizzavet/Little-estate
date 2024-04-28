@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BirchSeed
   m_EditorClassIdentifier: 
   _stageName: 0
-  _sprite: {fileID: 21300000, guid: 2f4a18c3bb3e2444481a66dde1cb3d59, type: 3}
+  _sprite: {fileID: 21300000, guid: 3edcb5068668b774fb1a3d3886d3a75b, type: 3}
   _priceCost: 10

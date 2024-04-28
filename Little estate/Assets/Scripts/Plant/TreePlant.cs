@@ -7,11 +7,6 @@ public class TreePlant : Plant, ITree
         
     }
 
-    public override void Grow()
-    {
-       
-    }
-
     public override void Loot()
     {
         

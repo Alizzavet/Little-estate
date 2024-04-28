@@ -8,7 +8,7 @@ public class ShopItemBar : MonoBehaviour
     
     private PlantConfig _plantConfig;
 
-    private void Awake()
+    private void OnEnable()
     {
         _shopItem.onClick.AddListener(OnShopItemButtonClicked);
     }
@@ -22,5 +22,10 @@ public class ShopItemBar : MonoBehaviour
     private void OnShopItemButtonClicked()
     {
        PlantSpawner.Instance.CreatePlantPreview(_plantConfig); 
+    }
+
+    private void OnDisable()
+    {
+        _shopItem.onClick.RemoveListener(OnShopItemButtonClicked);
     }
 }

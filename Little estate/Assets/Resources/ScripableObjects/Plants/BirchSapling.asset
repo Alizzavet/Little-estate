@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa180933b3d9c994da612014f2afcd77, type: 3}
-  m_Name: OakMature
+  m_Script: {fileID: 11500000, guid: f77b7f87c20b6354aab3fa35fee38b1a, type: 3}
+  m_Name: BirchSapling
   m_EditorClassIdentifier: 
-  _stageName: 3
-  _sprite: {fileID: 8287102861560281953, guid: 157cbc340d2b7e64ab85168e80e95550, type: 3}
-  _priceCost: 25
-  _timeToNextStage: 0
-  _lootName: 
-  _minLootCount: 1
-  _maxLootCount: 1
+  _stageName: 2
+  _sprite: {fileID: -8353649271199622519, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  _priceCost: 0
+  _dayToNextStage: 0
