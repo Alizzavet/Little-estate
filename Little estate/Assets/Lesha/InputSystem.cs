@@ -19,6 +19,8 @@ public class InputSystem : MonoBehaviour
             Destroy(gameObject);
         else
             Instance = this;
+        
+        Debug.Log("Контроллер");
     }
 
     public void SetInput(IInputable input)
