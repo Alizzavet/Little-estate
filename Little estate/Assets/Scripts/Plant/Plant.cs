@@ -8,10 +8,12 @@ public abstract class Plant : MonoBehaviour
    private PlantConfig _plantConfig;
    private SpriteRenderer _spriteRenderer;
    private GrowthStage _currentGrowthStage;
+   private Renderer _renderer;
 
    private void Awake()
    {
       _spriteRenderer = GetComponent<SpriteRenderer>();
+      _renderer = GetComponent<Renderer>();
    }
 
    private void OnEnable()
@@ -27,9 +29,25 @@ public abstract class Plant : MonoBehaviour
       _currentGrowthStage = new SeedlingStage();
    }
 
+   public Renderer GetPlantRenderer()
+   {
+      return _renderer;
+   }
+
    public virtual void Grow()
    {
       _currentGrowthStage = _currentGrowthStage.Grow(_spriteRenderer, _plantConfig);
+      
+      if (Physics.Raycast(transform.position, Vector3.down, out var hit))
+      {
+         if (hit.collider.gameObject.CompareTag("Ground"))
+         {
+            var worldPos = hit.point;
+            worldPos.y = hit.collider.bounds.max.y + _renderer.bounds.size.y / 2; 
+            transform.position = worldPos;
+            gameObject.transform.position = worldPos;
+         }
+      }
    }
 
    public abstract void CheckPlace();

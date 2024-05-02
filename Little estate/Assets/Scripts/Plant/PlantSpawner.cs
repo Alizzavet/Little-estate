@@ -7,6 +7,7 @@ public class PlantSpawner : MonoBehaviour
     
     private PlantPreview _plantPreview;
     private PlantConfig _plantConfig;
+    private Renderer _renderer;
 
     private void Awake()
     {
@@ -29,13 +30,24 @@ public class PlantSpawner : MonoBehaviour
     {
         var plant = PoolObject.Get<Plant>();
         plant.SetConfig(config);
+        _renderer = plant.GetPlantRenderer();
         return plant;
     }
 
     private void GrowPlant(Vector3 position)
     {
         var plant = SpawnPlant(_plantConfig);
-        plant.transform.position = position;
+        
+        if (Physics.Raycast(position, Vector3.down, out var hit))
+        {
+            if (hit.collider.gameObject.CompareTag("Ground"))
+            {
+                var worldPos = hit.point;
+                worldPos.y = hit.collider.bounds.max.y + _renderer.bounds.size.y / 2; 
+                transform.position = worldPos;
+                plant.transform.position = worldPos;
+            }
+        }
     }
 
     public void CreatePlantPreview(PlantConfig plantConfig)

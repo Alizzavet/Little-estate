@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88119d050a2e6a142bdd53599bf27f66, type: 3}
+  m_Name: Fir
+  m_EditorClassIdentifier: 
+  _seedStageConfig: {fileID: 11400000, guid: 87576e4dc56182b4892a6658d5f4c052, type: 2}
+  _seedlingStageConfig: {fileID: 11400000, guid: 419e7b0fb5757b344844d87c871ba603, type: 2}
+  _saplingStageConfig: {fileID: 11400000, guid: 3e71b8b1be07c1b4f8318d16137dd1fd, type: 2}
+  _matureStageConfig: {fileID: 11400000, guid: de5c5e4907746464da9456af2af26641, type: 2}
+  _shopItemName: Fir
+  _shopDescription: Happy new... year?
