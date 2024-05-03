@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour, IInputable
 {
-    [SerializeField] private Rigidbody _rb;
     [SerializeField] private float _speed = 5;
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _sprite;
@@ -19,29 +18,40 @@ public class PlayerMove : MonoBehaviour, IInputable
     
     public float _radius = 0.6f;
 
+
+
+    private CharacterController _characterController;
+
+    private void Start()
+    {
+        _characterController = GetComponent<CharacterController>();
+    }
+
     private void OnEnable()
     {
         InputSystem.Instance.SetInput(this);
         CameraFollowController.Instance.SetPlayer(transform);
         CameraFollowController.Instance.MoveToPlayer();
+        
+        Debug.Log("Игрок");
     }
 
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         var colliders = Physics.OverlapSphere(_jumperPos.position, _radius, groundLayer);
         isGround = colliders.Length > 0;
         
-        /*_rb.AddForce(_movementVector.normalized * _speed, ForceMode.Acceleration);*/
+        /*_rb.AddForce(_movementVector.normalized * _speed, ForceMode.Acceleration);#1#
 
         var horizontalVelocity = Vector3.Lerp(_rb.velocity, _movementVector.normalized * _speed, 0.5f);
         _rb.velocity = new Vector3(horizontalVelocity.x, _rb.velocity.y, horizontalVelocity.z);
-    }
+    }*/
     
 
-    private void Jump()
+    /*private void Jump()
     {
-        _rb.AddForce(new Vector3(0, 10, 0), ForceMode.VelocityChange);
-    }
+        /*_rb.AddForce(new Vector3(0, 10, 0), ForceMode.VelocityChange);#1#
+    }*/
     
     private void Flip()
     {
@@ -60,7 +70,7 @@ public class PlayerMove : MonoBehaviour, IInputable
         }
     }
 
-    public void HandleInput()
+    private void Move()
     {
         var horizontal = Input.GetAxisRaw("Horizontal");
         var vertical = Input.GetAxisRaw("Vertical");
@@ -78,8 +88,32 @@ public class PlayerMove : MonoBehaviour, IInputable
         
         _animator.SetFloat("horizontal", horizontal);
         _animator.SetFloat("vertical", vertical);
+
+        _characterController.Move(_movementVector.normalized * _speed * Time.deltaTime);
+    }
+
+    private Vector3 _verticalVelocity;
+    private bool _isGrounded;
+    private void Gravitation()
+    {
+        _isGrounded = Physics.CheckSphere(_jumperPos.position, 0.3f, LayerMask.GetMask("Default"));
         
-        if (Input.GetKeyDown(KeyCode.Space) && isGround)
-            Jump();
+        if (_jumperPos && Input.GetKeyDown(KeyCode.Space) && _isGrounded) // Проверяем, что персонаж на земле и нажата кнопка прыжка
+        {
+            _verticalVelocity.y = Mathf.Sqrt(5 * -2f * -9.81f); // Вычисляем вертикальную скорость для прыжка
+        }
+        else
+        {
+            _verticalVelocity.y += -9.81f * Time.deltaTime; // Применяем гравитацию
+        }
+        
+        _characterController.Move(_verticalVelocity);
+    }
+    public void HandleInput()
+    {
+
+        Move();
+        Gravitation();
+
     }
 }
