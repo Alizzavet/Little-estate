@@ -1278,8 +1278,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638456773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.211302, y: -1.7046785, z: 6.31129}
-  m_LocalScale: {x: 5.79, y: 5.79, z: 5.79}
+  m_LocalPosition: {x: 2.2113, y: -1.7046785, z: 6.4397}
+  m_LocalScale: {x: 5.79, y: 5.79, z: 6.046497}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1272543376}
@@ -1555,6 +1555,7 @@ GameObject:
   - component: {fileID: 1925583673}
   - component: {fileID: 1925583675}
   - component: {fileID: 1925583676}
+  - component: {fileID: 1925583677}
   m_Layer: 0
   m_Name: GameControllers
   m_TagString: Untagged
@@ -1643,6 +1644,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Camera: {fileID: 1339664340}
   Smoothing: 2.15
+--- !u!114 &1925583677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925583670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc6049bd6f3a0947a20221f4308e2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floors:
+  - {fileID: 8388890523132559768, guid: a40bf360d99a0174f8a2da320bff1548, type: 3}
+  - {fileID: 6647224854323500486, guid: 1f940833ba9636140b209e86a717fcfc, type: 3}
+  _roomsCount: 5
 --- !u!1 &2035115533
 GameObject:
   m_ObjectHideFlags: 0

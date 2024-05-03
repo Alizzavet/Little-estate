@@ -18,7 +18,6 @@ public class PlayerFightController : MonoBehaviour, IInputable
     private void Attack()
     {
         var hitEnemies = Physics.OverlapSphere(_punchPosition.position, 0.6f);
-        Debug.Log("Найдено " + hitEnemies.Length + " объектов в зоне удара.");
 
         foreach (var enemy in hitEnemies)
         {
@@ -40,7 +39,6 @@ public class PlayerFightController : MonoBehaviour, IInputable
     {
         if (Input.GetKeyDown(KeyCode.F))
             Attack();
-        
     }
     
     private void OnDrawGizmos()
