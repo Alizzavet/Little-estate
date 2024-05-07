@@ -32,7 +32,6 @@ public abstract class Enemy : MonoBehaviour, IDamagable
         }
 
     }
-
     protected void SpawnItems()
     {
         foreach (var itemConfig in _dropedItems)

@@ -19,8 +19,8 @@ public class WorldGenerator : MonoBehaviour
     private void Start()
     {
         Generate();
-        // отнимаю 35, чтобы не показывать край карты
-        CameraFollowController.Instance.SetX(_spawnedFloors[_spawnedFloors.Count - 1].EndPoint.position.x - 35f);
+        // отнимаю 40, чтобы не показывать край карты
+        CameraFollowController.Instance.SetX(_spawnedFloors[_spawnedFloors.Count - 1].EndPoint.position.x - 40f);
     }
 
     private void Generate()
@@ -35,6 +35,7 @@ public class WorldGenerator : MonoBehaviour
     private void SpawnRoom()
     {
         var room = Instantiate(_floors[Random.Range(0, _floors.Count)]);
+        
         if (_spawnedFloors.Count == 0)
             room.transform.position = new Vector3(50, 0, -2);
         else
@@ -43,6 +44,7 @@ public class WorldGenerator : MonoBehaviour
                                       room.StartPoint.localPosition;
         }
         
+        room.GetComponent<Floor>().SpawnObjects();
         _spawnedFloors.Add(room);
     }
 }

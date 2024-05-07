@@ -18,17 +18,28 @@ public class DropedItem : MonoBehaviour, ITakeable
     
     private IEnumerator Animation()
     {
-        
-        transform.position = _startPos.position;
-        
         var randomX = Random.Range(-3f, 3f);
         var randomY = -1f;
         var randomZ = Random.Range(-3f, 3f);
+
+        transform.position = _startPos.position;
+        var newPosition = transform.position + new Vector3(randomX, randomY, randomZ);
+        transform.DOJump(newPosition, 3, 1, 1).SetEase(Ease.Flash).SetAutoKill(true);
         
-        transform.DOJump(transform.position + new Vector3(randomX, randomY, randomZ), 3, 1, 1).SetEase(Ease.Flash).SetAutoKill(true);
+        yield return new WaitForSeconds(1f);
+        transform.position = newPosition;
         
-        yield return new WaitForSeconds(1.5f);
-        transform.DOJump(transform.position, 1, 1, 3).SetLoops(-1);
+        // вверх-вниз
+        var duration = 1f; 
+        var distance = 1f; 
+        var upPosition = newPosition + new Vector3(0, distance, 0); 
+        var downPosition = newPosition; 
+
+        while (true) 
+        {
+            yield return transform.DOMove(upPosition, duration).SetEase(Ease.InOutSine).WaitForCompletion();
+            yield return transform.DOMove(downPosition, duration).SetEase(Ease.InOutSine).WaitForCompletion();
+        }
     }
 
     public void SetData(DropedItemConfig config, Transform enemyPos)
@@ -39,12 +50,12 @@ public class DropedItem : MonoBehaviour, ITakeable
         _id = config.Id;
         
         _startPos = enemyPos;
-        
         StartCoroutine(Animation());
     }
 
     public DropedItemConfig Take()
     {
+        _startPos = null;
         PoolObject.Release(this);
         return _dropedItemConfig;
     }
