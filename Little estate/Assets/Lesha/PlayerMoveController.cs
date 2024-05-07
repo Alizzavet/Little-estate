@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ public class PlayerMoveController : MonoBehaviour, IInputable
     private Vector3 _verticalVelocity;
 
     [SerializeField] private LayerMask _layerMask;
+
+
+    [SerializeField] private PlayerInventory _playerInventory;
     private void OnEnable()
     {
         InputSystem.Instance.SetInput(this);
@@ -83,4 +87,18 @@ public class PlayerMoveController : MonoBehaviour, IInputable
         Move();
         Gravitation();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var item = other.gameObject.GetComponent<ITakeable>();
+        if (item != null)
+            _playerInventory.AddItem(item.Take());
+
+    }
+
+    /*private void OnCollisionEnter(Collision other)
+    {
+
+
+    }*/
 }
