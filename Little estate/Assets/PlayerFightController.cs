@@ -17,7 +17,7 @@ public class PlayerFightController : MonoBehaviour, IInputable
 
     private void Attack()
     {
-        var hitEnemies = Physics.OverlapSphere(_punchPosition.position, 0.6f);
+        var hitEnemies = Physics.OverlapSphere(_punchPosition.position, 1f);
 
         foreach (var enemy in hitEnemies)
         {
@@ -44,7 +44,7 @@ public class PlayerFightController : MonoBehaviour, IInputable
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_punchPosition.position, 0.6f);
+        Gizmos.DrawWireSphere(_punchPosition.position, 1f);
     }
     
 }
