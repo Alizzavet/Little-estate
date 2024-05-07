@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class WorldGenerator : MonoBehaviour
@@ -13,6 +14,7 @@ public class WorldGenerator : MonoBehaviour
     private List<Floor> _spawnedFloors = new List<Floor>();
     [SerializeField] private int _roomsCount;
 
+    [SerializeField] private NavMeshSurface _navMeshSurface;
 
     private void Start()
     {
@@ -27,6 +29,7 @@ public class WorldGenerator : MonoBehaviour
         {
             SpawnRoom();
         }
+        _navMeshSurface.BuildNavMesh();
     }
 
     private void SpawnRoom()

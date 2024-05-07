@@ -13,6 +13,7 @@ public class PlayerMoveController : MonoBehaviour, IInputable
     private bool _mFacingRight = true;
     private Vector3 _verticalVelocity;
 
+    [SerializeField] private LayerMask _layerMask;
     private void OnEnable()
     {
         InputSystem.Instance.SetInput(this);
@@ -47,7 +48,7 @@ public class PlayerMoveController : MonoBehaviour, IInputable
 
     private void Gravitation()
     {
-        _isGrounded = Physics.CheckSphere(_groundetPos.position, 0.5f, LayerMask.GetMask("Default"));
+        _isGrounded = Physics.CheckSphere(_groundetPos.position, 0.5f, _layerMask);
 
         if (_isGrounded)
         {
