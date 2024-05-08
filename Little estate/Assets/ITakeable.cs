@@ -5,4 +5,5 @@ using UnityEngine;
 public interface ITakeable
 {
     public DropedItemConfig Take();
+    /*public DropedItemConfig DropedItemConfig;*/
 }

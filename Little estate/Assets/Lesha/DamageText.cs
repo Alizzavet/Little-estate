@@ -20,7 +20,6 @@ public class DamageText : MonoBehaviour, IReleasable
         var randomY = Random.Range(-1f, 1f);
         var randomZ = Random.Range(-1f, 1f);
         
-        Debug.Log($"Я иду в  {randomX} {randomY} {randomZ}");
         transform.DOJump(transform.position + new Vector3(randomX, randomY, randomZ), 3, 1, 1);
     }
 

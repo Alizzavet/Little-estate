@@ -11,7 +11,7 @@ public class PlayerMoveController : MonoBehaviour, IInputable
     [SerializeField] private Animator _animator;
     private bool _isGrounded;
     private Vector3 _movementVector;
-    private bool _mFacingRight = true;
+    public bool _mFacingRight = true;
     private Vector3 _verticalVelocity;
 
     [SerializeField] private LayerMask _layerMask;
@@ -90,15 +90,17 @@ public class PlayerMoveController : MonoBehaviour, IInputable
 
     private void OnTriggerEnter(Collider other)
     {
-        var item = other.gameObject.GetComponent<ITakeable>();
-        if (item != null)
-            _playerInventory.AddItem(item.Take());
+        var item = other.gameObject.GetComponent<DropedItem>();
+
+
+        if (item == null || !item.CanTaking) 
+            return;
+        
+        // занесение предмета в инвентарь и удаление из мира
+        if(_playerInventory.AddItem(item.DropedItemConfig))
+            item.Take();
+
+
 
     }
-
-    /*private void OnCollisionEnter(Collision other)
-    {
-
-
-    }*/
 }

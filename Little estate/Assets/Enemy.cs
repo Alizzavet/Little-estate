@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Pool;
 using UnityEngine;
@@ -36,7 +34,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
     {
         foreach (var itemConfig in _dropedItems)
         {
-            for (var i = 0; i < itemConfig.Count; i++)
+            for (var i = 0; i < itemConfig.CountToSpawn; i++)
             {
                 var item = PoolObject.Get<DropedItem>();
                 item.SetData(itemConfig, transform);
