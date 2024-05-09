@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88119d050a2e6a142bdd53599bf27f66, type: 3}
   m_Name: Birch
   m_EditorClassIdentifier: 
-  _seedStageConfig: {fileID: 11400000, guid: 77a5044ef51b6814cb1537c096aaa650, type: 2}
   _seedlingStageConfig: {fileID: 11400000, guid: 42002e3261999ca4796e1a35aaae4f70, type: 2}
-  _saplingStageConfig: {fileID: 11400000, guid: e9ba71c0d6ccc0f439473539a28c735c, type: 2}
   _matureStageConfig: {fileID: 11400000, guid: cba745bbd3e23384db787083fc1ea244, type: 2}
-  _shopItemName: Birch
+  _shopItemName: "\u0411\u0435\u0440\u0435\u0437\u0430"
   _shopDescription: Cute and dear tree
+  _shopCost: 0
+  _seedSprite: {fileID: 21300000, guid: 7eb9804e3d9a96241a91028eb738ec56, type: 3}

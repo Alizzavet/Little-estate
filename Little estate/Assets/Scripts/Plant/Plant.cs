@@ -24,8 +24,8 @@ public abstract class Plant : MonoBehaviour
    public void SetConfig(PlantConfig newConfig)
    {
       _plantConfig = newConfig;
-      var seedling = _plantConfig.SeedlingStageConfig;
-      _spriteRenderer.sprite = seedling.Sprite;
+      var seedling = _plantConfig;
+      _spriteRenderer.sprite = seedling.SeedSprite;
       _currentGrowthStage = new SeedlingStage();
    }
 
