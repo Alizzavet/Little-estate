@@ -15,7 +15,7 @@ TagManager:
   - Player
   - PostProcessing
   - Environment
-  - 
+  - Ground
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 2050726213
     locked: 0
   - name: Environment
     uniqueID: 2593850751

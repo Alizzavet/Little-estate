@@ -9,8 +9,7 @@ public class MatureStageConfigEditor : Editor
         serializedObject.Update();
 
         MatureStageConfig config = (MatureStageConfig)target;
-
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("_stageName"));
+        
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_sprite"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_priceCost"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_dayToNextStage"));

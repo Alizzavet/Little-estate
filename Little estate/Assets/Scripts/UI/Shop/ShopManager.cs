@@ -12,6 +12,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject _shopWindowContent;
 
     private bool _isOnScene;
+    private bool _itemsCreated;
 
     private void Awake()
     {
@@ -35,12 +36,17 @@ public class ShopManager : MonoBehaviour
 
     private void CreateTreeItems()
     {
+        if (_itemsCreated) 
+            return;
+        
         foreach (var plantConfig in _plantConfigs)
         {
             var item = PoolObject.Get<ShopItemBar>();
             item.SetData(plantConfig);
             item.transform.SetParent(_shopWindowContent.transform, false);
         }
+
+        _itemsCreated = true;
     }
 
     private void OnDestroy()
