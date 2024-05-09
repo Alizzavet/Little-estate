@@ -99,6 +99,5 @@ public class DropedItem : MonoBehaviour, ITakeable
             yield return transform.DOMove(downPosition, duration).SetEase(Ease.InOutSine).WaitForCompletion();
         }
     }
-
-
+    
 }

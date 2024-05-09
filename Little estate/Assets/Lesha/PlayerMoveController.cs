@@ -25,6 +25,11 @@ public class PlayerMoveController : MonoBehaviour, IInputable
         CameraFollowController.Instance.MoveToPlayer();
     }
 
+    private void Update()
+    {
+        _characterController.Move(_verticalVelocity * Time.deltaTime);
+    }
+
     private void Move()
     {
         var horizontal = Input.GetAxisRaw("Horizontal");
@@ -62,7 +67,7 @@ public class PlayerMoveController : MonoBehaviour, IInputable
         else
             _verticalVelocity.y += -15 * Time.deltaTime;
 
-        _characterController.Move(_verticalVelocity * Time.deltaTime);
+        
     }
 
     private void Flip()
@@ -97,7 +102,7 @@ public class PlayerMoveController : MonoBehaviour, IInputable
             return;
         
         // занесение предмета в инвентарь и удаление из мира
-        if(_playerInventory.AddItem(item.DropedItemConfig))
+        if(_playerInventory.AddItemFromWorld(item.DropedItemConfig))
             item.Take();
 
 

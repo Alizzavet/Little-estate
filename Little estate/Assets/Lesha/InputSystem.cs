@@ -20,7 +20,6 @@ public class InputSystem : MonoBehaviour
         else
             Instance = this;
         
-        Debug.Log("Контроллер");
     }
 
     public void SetInput(IInputable input)

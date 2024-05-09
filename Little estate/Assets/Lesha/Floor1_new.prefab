@@ -1578,6 +1578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house3 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5336342844540106681, guid: a07a3c08df5acbc4db41acb280e1c061, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb4a94ca6e09ab849aeceafa422d7c5b, type: 2}
     - target: {fileID: 6619571521525904723, guid: a07a3c08df5acbc4db41acb280e1c061, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1727,6 +1731,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8788631002703924003}
     m_Modifications:
+    - target: {fileID: 255059421719118857, guid: 9df65fde72ad19a49a339fdf6952339d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb4a94ca6e09ab849aeceafa422d7c5b, type: 2}
     - target: {fileID: 1639363789859875823, guid: 9df65fde72ad19a49a339fdf6952339d, type: 3}
       propertyPath: m_Name
       value: house2 1

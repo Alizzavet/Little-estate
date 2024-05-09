@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,14 +20,11 @@ public class Floor : MonoBehaviour
             var spawnChance = Random.Range(1, 5);
 
             if (spawnChance >= 2)
-            {
-                Debug.Log($"Не {spawnChance}");
                 continue;
-            }
             
             if (_gameObjects == null)
                 return;
-            Debug.Log($"Спавним {spawnChance}");
+            
             var randomItem = Random.Range(0, _gameObjects.Count);
 
             var gameobject = Instantiate(_gameObjects[randomItem]);

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2441c3c018b46c468a4193b7ea7d7c6, type: 3}
   m_Name: SomeNewItem
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 0}
-  _count: 0
-  _id: 
+  _sprite: {fileID: 21300000, guid: a12075e62f79e4d4b92048066d7745c1, type: 3}
+  _countToSpawn: 0
+  _id: test
+  _count: 2
