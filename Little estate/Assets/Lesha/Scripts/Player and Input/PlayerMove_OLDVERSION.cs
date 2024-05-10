@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour, IInputable
+public class PlayerMove_OLDVERSION : MonoBehaviour, IInputable
 {
     [SerializeField] private float _speed = 5;
     [SerializeField] private Animator _animator;

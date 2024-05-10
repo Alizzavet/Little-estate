@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 
-
 public class PlayerInteract : MonoBehaviour, IInputable
 {
     private IInteractable _interactableObj;

@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 public class DamageText : MonoBehaviour, IReleasable
 {
     [SerializeField] private TMP_Text _damageText;
-    
+
 
     public void SetText(int damageCount)
     {
@@ -19,15 +19,13 @@ public class DamageText : MonoBehaviour, IReleasable
         var randomX = Random.Range(-2f, 2f);
         var randomY = Random.Range(-1f, 1f);
         var randomZ = Random.Range(-1f, 1f);
-        
+
         transform.DOJump(transform.position + new Vector3(randomX, randomY, randomZ), 3, 1, 1);
     }
 
     private void OnEnable()
     {
         StartCoroutine(Animation());
-
-
     }
 
     private IEnumerator Animation()

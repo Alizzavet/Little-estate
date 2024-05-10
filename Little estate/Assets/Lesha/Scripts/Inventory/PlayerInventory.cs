@@ -1,16 +1,8 @@
-using System.Collections.Generic;
 using Pool;
 using UnityEngine;
 
-public class PlayerInventory : MonoBehaviour, IInputable, IInventory
+public class PlayerInventory : InventoryManager, IInputable
 {
-    [SerializeField] private List<InventorySlot> _inventorySlots;
-    private const int MaxCount = 30;
-    
-    private int _selectedSlotIndex;
-    private readonly Color _defaultColor = Color.white; 
-    private readonly Color _selectedColor = Color.green;
-
     public static PlayerInventory Instance;
 
     private ChestInventory _currentChest;
@@ -93,20 +85,18 @@ public class PlayerInventory : MonoBehaviour, IInputable, IInventory
         }
         
     }
-    public bool GetSlot(InventorySlot item)
+    public new bool GetSlot(InventorySlot item)
     {
         // Проверяем, есть ли уже такой предмет в инвентаре
         foreach (var slot in _inventorySlots)
         {
             if (slot._myItem == item._myItem && slot._currentCount < MaxCount)
             {
-                int remaining = slot.AddToStack(item._currentCount);
+                var remaining = slot.AddToStack(item._currentCount);
                 if (remaining == 0)
-                {
-                    return true; // все предметы поместились в стак
-                }
+                    return true; 
 
-                item._currentCount = remaining; // обновляем количество предметов в переданном слоте
+                item._currentCount = remaining; 
             }
         }
     
@@ -116,11 +106,9 @@ public class PlayerInventory : MonoBehaviour, IInputable, IInventory
             if (slot._myItem == null)
             {
                 slot.SetItem(item._myItem);
-                item._currentCount = slot.AddToStack(item._currentCount - 1); // добавляем предметы в слот и обновляем количество оставшихся предметов
+                item._currentCount = slot.AddToStack(item._currentCount - 1);
                 if (item._currentCount == 0)
-                {
-                    return true; // все предметы поместились в стак
-                }
+                    return true;
             }
         }
 
@@ -129,40 +117,23 @@ public class PlayerInventory : MonoBehaviour, IInputable, IInventory
         {
             if (slot._myItem == item._myItem && slot._currentCount < MaxCount)
             {
-                int remaining = slot.AddToStack(item._currentCount);
+                var remaining = slot.AddToStack(item._currentCount);
                 if (remaining == 0)
-                {
-                    return true; // все предметы поместились в стак
-                }
-                else
-                {
-                    item._currentCount = remaining; // обновляем количество предметов в переданном слоте
-                }
+                    return true; 
+
+                item._currentCount = remaining; 
             }
         }
 
-        return false; // не все предметы поместились в стак
+        return false; 
     }
     
-    
-    public void SelectSlot(InventorySlot slot)
+    public override void SelectSlot(InventorySlot slot)
     {
-        if (slot._myItem == null)
-            Debug.Log($"Слот Инвентаря пуст");
-        else
-            Debug.Log($"Слот Инвентаря {slot._currentCount}");
-        
-        
         if (_currentChest == null)
             return;
         
         if (_currentChest.GetSlot(slot))
             slot.DropItem();
-        
-        
-        
-
     }
-
-
 }

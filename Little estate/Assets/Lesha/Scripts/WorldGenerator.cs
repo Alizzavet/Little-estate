@@ -9,7 +9,6 @@ using Random = UnityEngine.Random;
 public class WorldGenerator : MonoBehaviour
 {
     [SerializeField] private List<Floor> _floors;
-// 50 0 -2
 
     private List<Floor> _spawnedFloors = new List<Floor>();
     [SerializeField] private int _roomsCount;
@@ -39,10 +38,8 @@ public class WorldGenerator : MonoBehaviour
         if (_spawnedFloors.Count == 0)
             room.transform.position = new Vector3(50, 0, -2);
         else
-        {
             room.transform.position = _spawnedFloors[_spawnedFloors.Count - 1].EndPoint.position -
                                       room.StartPoint.localPosition;
-        }
         
         room.GetComponent<Floor>().SpawnObjects();
         _spawnedFloors.Add(room);

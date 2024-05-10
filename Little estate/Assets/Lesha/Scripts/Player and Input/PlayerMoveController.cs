@@ -15,8 +15,7 @@ public class PlayerMoveController : MonoBehaviour, IInputable
     private Vector3 _verticalVelocity;
 
     [SerializeField] private LayerMask _layerMask;
-
-
+    
     [SerializeField] private PlayerInventory _playerInventory;
     private void OnEnable()
     {

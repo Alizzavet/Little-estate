@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 // TODO сюда нужно добавить макс предметов в стаке (может попробовать черех DropItemConf)
 public class InventorySlot : MonoBehaviour, IPointerClickHandler
 {
@@ -34,13 +32,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         
         UpdateInfo();
     }
-
-// TODO вот здесь менять
-    /*public void AddToStack()
-    {
-        _currentCount++;
-        UpdateInfo();
-    }*/
+    
     public int AddToStack(int itemCount)
     {
         const int maxItemCount = 30;
@@ -83,15 +75,11 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             // Получаем объект, по которому было произведено нажатие
-            GameObject clickedObject = eventData.pointerCurrentRaycast.gameObject;
-
-            // Проверяем, является ли объект слотом инвентаря или его дочерним объектом
+            var clickedObject = eventData.pointerCurrentRaycast.gameObject;
+            
             var clickedSlot = clickedObject.GetComponentInParent<InventorySlot>();
             if (clickedSlot != null)
-            {
-                // Вызываем метод SelectSlot для обновления выбранного слота
                 inventory.SelectSlot(this);
-            }
         }
     }
 }

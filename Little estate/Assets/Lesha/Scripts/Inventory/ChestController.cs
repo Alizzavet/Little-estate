@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChestController : MonoBehaviour, IInteractable, IInputable
@@ -17,8 +14,6 @@ public class ChestController : MonoBehaviour, IInteractable, IInputable
 
     public void Interact()
     {
-        Debug.Log("Открытие инвентаря");
-        
         _chestUI.SetActive(true);
         InputSystem.Instance.SetTimedInput(this);
         PlayerInventory.Instance.SetChest(_chestInventory);
