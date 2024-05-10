@@ -133,6 +133,10 @@ public class ChestInventory : MonoBehaviour, IInventory
         else
             Debug.Log($"Слот Инвентаря {slot._currentCount}");
         
+        if (PlayerInventory.Instance == null)
+            return;
         
+        if (PlayerInventory.Instance.GetSlot(slot))
+            slot.DropItem();
     }
 }

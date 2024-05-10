@@ -93,7 +93,56 @@ public class PlayerInventory : MonoBehaviour, IInputable, IInventory
         }
         
     }
+    public bool GetSlot(InventorySlot item)
+    {
+        // Проверяем, есть ли уже такой предмет в инвентаре
+        foreach (var slot in _inventorySlots)
+        {
+            if (slot._myItem == item._myItem && slot._currentCount < MaxCount)
+            {
+                int remaining = slot.AddToStack(item._currentCount);
+                if (remaining == 0)
+                {
+                    return true; // все предметы поместились в стак
+                }
+
+                item._currentCount = remaining; // обновляем количество предметов в переданном слоте
+            }
+        }
     
+        // Если нет, ищем пустой слот и добавляем туда предмет
+        foreach (var slot in _inventorySlots)
+        {
+            if (slot._myItem == null)
+            {
+                slot.SetItem(item._myItem);
+                item._currentCount = slot.AddToStack(item._currentCount - 1); // добавляем предметы в слот и обновляем количество оставшихся предметов
+                if (item._currentCount == 0)
+                {
+                    return true; // все предметы поместились в стак
+                }
+            }
+        }
+
+        // Если все слоты заполнены, ищем слоты с тем же предметом и добавляем туда оставшиеся предметы
+        foreach (var slot in _inventorySlots)
+        {
+            if (slot._myItem == item._myItem && slot._currentCount < MaxCount)
+            {
+                int remaining = slot.AddToStack(item._currentCount);
+                if (remaining == 0)
+                {
+                    return true; // все предметы поместились в стак
+                }
+                else
+                {
+                    item._currentCount = remaining; // обновляем количество предметов в переданном слоте
+                }
+            }
+        }
+
+        return false; // не все предметы поместились в стак
+    }
     
     
     public void SelectSlot(InventorySlot slot)
