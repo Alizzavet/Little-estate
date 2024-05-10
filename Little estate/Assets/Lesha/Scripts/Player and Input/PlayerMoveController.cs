@@ -17,8 +17,14 @@ public class PlayerMoveController : MonoBehaviour, IInputable
     [SerializeField] private LayerMask _layerMask;
     
     [SerializeField] private PlayerInventory _playerInventory;
+
+    private PlayerFightController _playerFightController;
+
+
+
     private void OnEnable()
     {
+        _playerFightController = GetComponent<PlayerFightController>();
         InputSystem.Instance.SetInput(this);
         CameraFollowController.Instance.SetPlayer(transform);
         CameraFollowController.Instance.MoveToPlayer();
@@ -88,8 +94,12 @@ public class PlayerMoveController : MonoBehaviour, IInputable
 
     public void HandleInput()
     {
-        Move();
         Gravitation();
+        
+        if (_playerFightController._isAttacking)
+            return;
+        
+        Move();
     }
 
     private void OnTriggerEnter(Collider other)
