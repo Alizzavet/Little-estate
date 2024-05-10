@@ -21,8 +21,6 @@ public class PlayerFightController : MonoBehaviour, IInputable
 
     private void Attack()
     {
-
-        
         var hitEnemies = Physics.OverlapSphere(_punchPosition.position, 1f);
 
         foreach (var enemy in hitEnemies)
