@@ -136,6 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _punchPosition: {fileID: 1277787178869861245}
+  _animator: {fileID: 1277787178400536886}
+  _isAttacking: 0
 --- !u!114 &1277787178400536875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +622,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277787178869861244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.07, y: 0.47, z: 0}
+  m_LocalPosition: {x: 4.51, y: 0.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
