@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa180933b3d9c994da612014f2afcd77, type: 3}
   m_Name: MatureFir
   m_EditorClassIdentifier: 
-  _stageName: 3
-  _sprite: {fileID: 21300000, guid: 5471de5c155271c4ead7e2d93bbf2995, type: 3}
+  _sprite: {fileID: 21300000, guid: 0347dc6d81367cf49a2432c080f6a338, type: 3}
   _priceCost: 0
   _dayToNextStage: 0
   _lootName: 

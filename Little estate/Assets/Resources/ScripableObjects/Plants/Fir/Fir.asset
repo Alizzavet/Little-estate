@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88119d050a2e6a142bdd53599bf27f66, type: 3}
   m_Name: Fir
   m_EditorClassIdentifier: 
-  _seedStageConfig: {fileID: 11400000, guid: 87576e4dc56182b4892a6658d5f4c052, type: 2}
-  _seedlingStageConfig: {fileID: 11400000, guid: 419e7b0fb5757b344844d87c871ba603, type: 2}
-  _saplingStageConfig: {fileID: 11400000, guid: 3e71b8b1be07c1b4f8318d16137dd1fd, type: 2}
+  _seedlingStageConfig: {fileID: 11400000, guid: 5c4f0f84a379da245af5f2ad06504c15, type: 2}
   _matureStageConfig: {fileID: 11400000, guid: de5c5e4907746464da9456af2af26641, type: 2}
-  _shopItemName: Fir
-  _shopDescription: Happy new... year?
+  _shopItemName: "\u0415\u043B\u043A\u0430"
+  _shopDescription: "\u0421 \u043D\u043E\u0432\u044B\u043C... \u0433\u043E\u0434\u043E\u043C?"
+  _shopCost: 50
+  _seedSprite: {fileID: 21300000, guid: 68827bb767cd9c245aa5c1fac1832426, type: 3}

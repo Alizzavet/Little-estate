@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8e1a74aa772ae408f3fcc9354587b1, type: 3}
   m_Name: SeedlingFir
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 5471de5c155271c4ead7e2d93bbf2995, type: 3}
   _priceCost: 0
   _dayToNextStage: 0

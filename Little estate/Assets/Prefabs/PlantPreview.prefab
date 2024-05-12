@@ -101,6 +101,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  _moveInterval: 0.3
+  _movementStep: 50
 --- !u!65 &-4772152290265915187
 BoxCollider:
   m_ObjectHideFlags: 0

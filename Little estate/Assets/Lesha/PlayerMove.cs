@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour, IInputable
     
     public float _radius = 0.6f;
 
-    private void OnEnable()
+    private void Start()
     {
         InputSystem.Instance.SetInput(this);
         CameraFollowController.Instance.SetPlayer(transform);
