@@ -9,11 +9,13 @@ public abstract class Plant : MonoBehaviour
    private SpriteRenderer _spriteRenderer;
    private GrowthStage _currentGrowthStage;
    private Renderer _renderer;
+   private BoxCollider _collider;
 
    private void Awake()
    {
       _spriteRenderer = GetComponent<SpriteRenderer>();
       _renderer = GetComponent<Renderer>();
+      _collider = GetComponent<BoxCollider>();
    }
 
    private void OnEnable()
@@ -26,6 +28,8 @@ public abstract class Plant : MonoBehaviour
       _plantConfig = newConfig;
       var seedling = _plantConfig;
       _spriteRenderer.sprite = seedling.SeedSprite;
+      CheckCollider();
+      
       _currentGrowthStage = new SeedlingStage();
    }
 
@@ -34,7 +38,7 @@ public abstract class Plant : MonoBehaviour
       return _renderer;
    }
 
-   public virtual void Grow()
+   private void Grow()
    {
       _currentGrowthStage = _currentGrowthStage.Grow(_spriteRenderer, _plantConfig);
       
@@ -48,9 +52,20 @@ public abstract class Plant : MonoBehaviour
             gameObject.transform.position = worldPos;
          }
       }
+      
+      CheckCollider();
    }
 
-   public abstract void CheckPlace();
+   private void CheckCollider()
+   {
+      var sprite = _spriteRenderer.sprite;
+      var size = _collider.size;
+      size = sprite.bounds.size;
+      var zSize = 20f; 
+      size = new Vector3(size.x, size.y, zSize);
+      _collider.size = size;
+      _collider.center = sprite.bounds.center;
+   }
    
    public abstract void Loot();
 

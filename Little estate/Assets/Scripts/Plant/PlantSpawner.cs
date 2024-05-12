@@ -3,6 +3,7 @@ using Pool;
 
 public class PlantSpawner : MonoBehaviour
 {
+    [SerializeField] private Transform _playerCollision;
     public static PlantSpawner Instance { get; private set; }
     
     private PlantPreview _plantPreview;
@@ -19,7 +20,7 @@ public class PlantSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && _plantPreview != null)
+        if (Input.GetMouseButtonDown(0) && _plantPreview != null && _plantPreview.IsAvailable())
         {
             GrowPlant(_plantPreview.transform.position);
             DestroyPlantPreview();
@@ -31,6 +32,7 @@ public class PlantSpawner : MonoBehaviour
         var plant = PoolObject.Get<Plant>();
         plant.SetConfig(config);
         _renderer = plant.GetPlantRenderer();
+        
         return plant;
     }
 
@@ -53,6 +55,7 @@ public class PlantSpawner : MonoBehaviour
     public void CreatePlantPreview(PlantConfig plantConfig)
     {
         var plantPreview = PoolObject.Get<PlantPreview>();
+        plantPreview.transform.position = _playerCollision.position;
         plantPreview.SetPlantSprite(plantConfig.MatureStageConfig.Sprite);
         _plantPreview = plantPreview;
         _plantConfig = plantConfig;

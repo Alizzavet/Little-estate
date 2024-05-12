@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class PlantPreview : MonoBehaviour
+public class PlantPreview : MonoBehaviour, IInputable
 {
-    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private LayerMask _unAvailable; 
     [SerializeField] private float _moveInterval = 0.3f;
     [SerializeField] private float _movementStep = 50f;
-    
+
     private float _lastMoveTime;
-    private float _fixedHeight;                         
+    private float _fixedHeight;   
+    private int _environmentCounter;
+    private bool _isAvailable = true;
 
     private SpriteRenderer _spriteRenderer;
     private Vector3 _lastMousePosition;
@@ -19,8 +22,13 @@ public class PlantPreview : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<BoxCollider>();
     }
+    
+    public void OnEnable()
+    {
+        InputSystem.Instance.SetTimedInput(this);
+    }
 
-    private void Update()
+    public void HandleInput()
     {
         var horizontalInput = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
         var verticalInput = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
@@ -35,34 +43,78 @@ public class PlantPreview : MonoBehaviour
             _lastMoveTime = currentTime;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((_unAvailable.value & (1 << other.gameObject.layer)) != 0)
+        {
+            _environmentCounter++;
+            UpdateColor();
+            _isAvailable = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if ((_unAvailable.value & (1 << other.gameObject.layer)) != 0)
+        {
+            _environmentCounter--;
+            UpdateColor();
+            _isAvailable = true;
+        }
+    }
+
+    public bool IsAvailable()
+    {
+        return _isAvailable;
+    }
+
+    private void UpdateColor()
+    {
+        if (_environmentCounter > 0)
+            _spriteRenderer.color = Color.red;
+        
+        else
+            _spriteRenderer.color = Color.green;
+    }
+
     
     private void MoveObject(int horizontalInput, int verticalInput)
     {
-        Vector3 movement = new Vector3(horizontalInput * _movementStep, 0f, verticalInput * _movementStep);
+        var movement = new Vector3(horizontalInput * _movementStep, 0f, verticalInput * _movementStep);
         transform.Translate(movement);
 
         // Устанавливаем позицию на фиксированной высоте над землей
-        Vector3 currentPos = transform.position;
+        var currentPos = transform.position;
         currentPos.y = _yPosition.y;
         transform.position = currentPos;
     }
-
     
     public void SetPlantSprite(Sprite sprite)
     {
         _spriteRenderer.sprite = sprite;
-        
-        _collider.size = sprite.bounds.size;
+        _spriteRenderer.color = Color.green;
+
+        var size = _collider.size;
+        size = sprite.bounds.size;
+        var zSize = 20f; 
+        size = new Vector3(size.x, size.y, zSize);
+        _collider.size = size;
         _collider.center = sprite.bounds.center;
-        
+
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, groundLayer))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, _groundLayer))
         {
             Vector3 position = transform.position;
             position.y = hit.collider.bounds.max.y + (_collider.bounds.size.y / 2);
             transform.position = position;
             _yPosition = position;
         }
+    }
+
+    private void OnDisable()
+    {
+        InputSystem.Instance.ReturnInput();
     }
 }
 
