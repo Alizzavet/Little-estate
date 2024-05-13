@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InteractMenuItem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TMP_Text _tittleText;
+
+    public void GetTittle(string text)
     {
-        
+        _tittleText.text = text;
+    }
+    
+    public void SetTextColor(Color color)
+    {
+        _tittleText.color = color;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Done()
     {
+        var menuItem = GetComponent<IInteractMenuItem>();
+        if (menuItem != null)
+            menuItem.Execute();
         
     }
 }

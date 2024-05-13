@@ -1,6 +1,7 @@
+using Pool;
 using UnityEngine;
 
-public abstract class Plant : MonoBehaviour
+public abstract class Plant : MonoBehaviour, IInteractable
 {
    private PlantConfig _plantConfig;
    private SpriteRenderer _spriteRenderer;
@@ -69,5 +70,11 @@ public abstract class Plant : MonoBehaviour
    private void OnDisable()
    {
       DayNightCycle.NextDay -= Grow;
+   }
+
+   public void Interact()
+   {
+      var menu = PoolObject.Get<InteractMenu>();
+      menu.GetTransform(gameObject.transform);
    }
 }
