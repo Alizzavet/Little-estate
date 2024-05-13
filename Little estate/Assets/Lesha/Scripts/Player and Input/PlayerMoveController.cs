@@ -17,7 +17,7 @@ public class PlayerMoveController : MonoBehaviour, IInputable
     [SerializeField] private LayerMask _layerMask;
     
     [SerializeField] private PlayerInventory _playerInventory;
-    private void OnEnable()
+    private void Start()
     {
         InputSystem.Instance.SetInput(this);
         CameraFollowController.Instance.SetPlayer(transform);

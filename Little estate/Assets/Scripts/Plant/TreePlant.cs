@@ -1,6 +1,5 @@
-public class TreePlant : Plant, ITree
+public class TreePlant : Plant
 {
-    public int Durability { get; set; }
 
     public override void Loot()
     {

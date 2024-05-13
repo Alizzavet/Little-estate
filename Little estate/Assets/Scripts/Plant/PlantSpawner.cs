@@ -25,6 +25,12 @@ public class PlantSpawner : MonoBehaviour
             GrowPlant(_plantPreview.transform.position);
             DestroyPlantPreview();
         }
+     
+        if (Input.GetKeyDown(KeyCode.Escape) && _plantPreview != null)
+        {
+            DestroyPlantPreview();
+            Coin.Instance.GetCoin(_plantConfig.ShopCost);
+        }
     }
 
     public Plant SpawnPlant(PlantConfig config)

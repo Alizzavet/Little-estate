@@ -1,13 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MatureStageConfig", menuName = "Configs/Mature Stage Config")]
 public class MatureStageConfig : SeedlingStageConfig
 {
-    [SerializeField] private string _lootName;
+    [SerializeField] private List<DropedItemConfig> _dropedItemConfigs;
     [SerializeField] private int _minLootCount;
     [SerializeField] private int _maxLootCount;
 
-    public string LootName => _lootName;
+    public List<DropedItemConfig> DropedItemConfigs => _dropedItemConfigs;
 
     public int MinLootCount
     {

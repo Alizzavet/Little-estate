@@ -13,7 +13,7 @@ public class MatureStageConfigEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_sprite"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_priceCost"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_dayToNextStage"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("_lootName"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("_dropedItemConfigs"));
         
         config.MinLootCount = EditorGUILayout.IntSlider("Min Loot Count", config.MinLootCount, 
             1, Mathf.Max(config.MaxLootCount, 1));

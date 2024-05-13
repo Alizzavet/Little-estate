@@ -49,16 +49,24 @@ public class CameraFollowController : MonoBehaviour
 
     public void MoveToPlayer()
     {
+        Debug.Log("Камера последовала");
         _offset = _Camera.transform.position - _player.position;
         _offset.y += 2f;
         _currentFollow = _player;
         isMovingToPoint = false;
+
+        var playerTransform = new Vector3();
+        playerTransform = _player.transform.position;
+        Debug.Log(playerTransform);
     }
     
     private void Update()
     {
         if (_currentFollow == null)
+        {
+            Debug.Log("Шото нуль");
             return;
+        }
 
         Vector3 targetCamPos;
         if (!isMovingToPoint)
@@ -73,6 +81,7 @@ public class CameraFollowController : MonoBehaviour
         }
         else
         {
+            Debug.Log("Шото не нуль?");
             targetCamPos = _currentFollow.transform.position;
         }
         

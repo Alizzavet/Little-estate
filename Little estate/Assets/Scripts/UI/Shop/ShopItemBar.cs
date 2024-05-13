@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,8 @@ public class ShopItemBar : MonoBehaviour
 {
     [SerializeField] private ShopItemBarView _itemBarView;
     [SerializeField] private Button _shopItem;
+
+    public event Action IsShop;
     
     private PlantConfig _plantConfig;
 
@@ -21,7 +24,14 @@ public class ShopItemBar : MonoBehaviour
 
     private void OnShopItemButtonClicked()
     {
-       PlantSpawner.Instance.CreatePlantPreview(_plantConfig); 
+        if (Coin.Instance.CurrentCoinCount() < _plantConfig.ShopCost)
+            return;
+
+        PlantSpawner.Instance.CreatePlantPreview(_plantConfig);
+        Coin.Instance.SpendCoin(_plantConfig.ShopCost);
+        
+        if (IsShop != null)
+            IsShop.Invoke();
     }
 
     private void OnDisable()

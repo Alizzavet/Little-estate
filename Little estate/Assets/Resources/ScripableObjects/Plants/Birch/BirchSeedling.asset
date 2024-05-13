@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8e1a74aa772ae408f3fcc9354587b1, type: 3}
   m_Name: BirchSeedling
   m_EditorClassIdentifier: 
-  _stageName: 1
   _sprite: {fileID: 21300000, guid: 6a80eb2d9a6fb3c47980dd3b6dab2d8f, type: 3}
-  _priceCost: 0
+  _priceCost: 3
   _dayToNextStage: 0

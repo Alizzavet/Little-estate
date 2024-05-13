@@ -2,9 +2,6 @@ using UnityEngine;
 
 public abstract class Plant : MonoBehaviour
 {
-   [SerializeField] private Collider2D _collider2D;
-   [SerializeField] private Rigidbody2D _rigidbody2D;
-
    private PlantConfig _plantConfig;
    private SpriteRenderer _spriteRenderer;
    private GrowthStage _currentGrowthStage;
