@@ -4,7 +4,7 @@ public class SeedlingStage : GrowthStage
 {
     public override GrowthStage Grow(SpriteRenderer spriteRenderer, PlantConfig plantConfig)
     {
-        spriteRenderer.sprite = plantConfig.SeedlingStageConfig.Sprite;
+        spriteRenderer.sprite = plantConfig.MatureStageConfig.Sprite;
         return new MatureStage();
     }
 }

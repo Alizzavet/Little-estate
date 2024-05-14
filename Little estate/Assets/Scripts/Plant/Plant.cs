@@ -8,12 +8,14 @@ public abstract class Plant : MonoBehaviour, IInteractable
    private GrowthStage _currentGrowthStage;
    private Renderer _renderer;
    private BoxCollider _collider;
+   private Dryness _dryness;
 
    private void Awake()
    {
       _spriteRenderer = GetComponent<SpriteRenderer>();
       _renderer = GetComponent<Renderer>();
       _collider = GetComponent<BoxCollider>();
+      _dryness = GetComponent<Dryness>();
    }
 
    private void OnEnable()
@@ -27,8 +29,6 @@ public abstract class Plant : MonoBehaviour, IInteractable
       var seedling = _plantConfig;
       _spriteRenderer.sprite = seedling.SeedSprite;
       CheckCollider();
-      
-      _currentGrowthStage = new SeedlingStage();
    }
 
    public Renderer GetPlantRenderer()
@@ -38,7 +38,13 @@ public abstract class Plant : MonoBehaviour, IInteractable
 
    private void Grow()
    {
-      _currentGrowthStage = _currentGrowthStage.Grow(_spriteRenderer, _plantConfig);
+      if (_currentGrowthStage == null)
+      {
+         _currentGrowthStage = new SeedlingStage();
+         _spriteRenderer.sprite = _plantConfig.SeedlingStageConfig.Sprite;
+      }
+      else 
+         _currentGrowthStage = _currentGrowthStage.Grow(_spriteRenderer, _plantConfig);
       
       if (Physics.Raycast(transform.position, Vector3.down, out var hit))
       {
@@ -74,7 +80,17 @@ public abstract class Plant : MonoBehaviour, IInteractable
 
    public void Interact()
    {
-      var menu = PoolObject.Get<InteractMenu>();
-      menu.GetTransform(gameObject.transform);
+      if (_currentGrowthStage is MatureStage)
+      {
+         var menu = PoolObject.Get<InteractMenu>(); 
+         menu.Plant(_plantConfig, this); 
+         menu.GetTransform(gameObject.transform);
+      }
+
+      if (_dryness.PlantDry)
+      {
+         Debug.Log("тратим энергию на полив!");
+         _dryness.Moisten();
+      }
    }
 }

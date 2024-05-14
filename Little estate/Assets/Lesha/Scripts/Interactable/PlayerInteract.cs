@@ -4,8 +4,19 @@ using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour, IInputable
 {
-    private IInteractable _interactableObj;
     [SerializeField] private TMP_Text _text;
+    
+    public static PlayerInteract Instance { get; private set; }
+    
+    private IInteractable _interactableObj;
+    
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
+    }
 
     private void Start()
     {
@@ -22,19 +33,22 @@ public class PlayerInteract : MonoBehaviour, IInputable
         }
     }
     
-
     private void OnTriggerExit(Collider other)
     {
         if (_interactableObj == other.GetComponent<IInteractable>())
-        {
-            _interactableObj = null;
-            _text.gameObject.SetActive(false);
-        }
+            RemoveInteractObject();
+        
     }
 
     public void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E)) 
             _interactableObj?.Interact();
+    }
+
+    public void RemoveInteractObject()
+    {
+        _interactableObj = null;
+        _text.gameObject.SetActive(false);
     }
 }

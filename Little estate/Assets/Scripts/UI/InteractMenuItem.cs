@@ -5,6 +5,19 @@ public class InteractMenuItem : MonoBehaviour
 {
     [SerializeField] private TMP_Text _tittleText;
 
+    private IInteractMenuItem _iInteractMenuItem;
+
+    public void GetScript()
+    {
+        _iInteractMenuItem = GetComponent<IInteractMenuItem>();
+    }
+
+    public void GetPlantConfig(PlantConfig plantConfig, Plant plant)
+    {
+        _iInteractMenuItem.GetConfig(plantConfig, plant);
+    }
+
+
     public void GetTittle(string text)
     {
         _tittleText.text = text;
@@ -17,9 +30,9 @@ public class InteractMenuItem : MonoBehaviour
 
     public void Done()
     {
-        var menuItem = GetComponent<IInteractMenuItem>();
-        if (menuItem != null)
-            menuItem.Execute();
+        if (_iInteractMenuItem != null)
+            _iInteractMenuItem.Execute();
         
+        InteractMenu.Instance.Release();
     }
 }

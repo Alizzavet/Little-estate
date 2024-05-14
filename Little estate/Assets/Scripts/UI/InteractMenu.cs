@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Pool;
 using UnityEngine;
+using Pool;
 
 public class InteractMenu : MonoBehaviour, IInputable
 {
@@ -13,6 +13,9 @@ public class InteractMenu : MonoBehaviour, IInputable
     
     private List<GameObject> _interactMenuItems = new();
     private int _currentIndex;
+    private bool _isCreate;
+    private PlantConfig _plantConfig;
+    private Plant _plant;
 
     private void Awake()
     {
@@ -20,6 +23,12 @@ public class InteractMenu : MonoBehaviour, IInputable
             Destroy(gameObject);
         else
             Instance = this;
+    }
+
+    public void Plant(PlantConfig config, Plant plant)
+    {
+        _plantConfig = config;
+        _plant = plant;
     }
 
     public void GetTransform(Transform plant)
@@ -31,7 +40,9 @@ public class InteractMenu : MonoBehaviour, IInputable
     {
         InputSystem.Instance.SetTimedInput(this);
         
-        CreateItems();
+        if(!_isCreate)
+            CreateItems();
+        
         UpdateItemSelection();
     }
 
@@ -43,25 +54,24 @@ public class InteractMenu : MonoBehaviour, IInputable
 
         foreach (var type in types)
         {
-            GameObject instance = Instantiate(_itemPrefab);
-            IInteractMenuItem addedScript = (IInteractMenuItem)instance.AddComponent(type);
+            var instance = Instantiate(_itemPrefab);
+            var addedScript = (IInteractMenuItem)instance.AddComponent(type);
             _interactMenuItems.Add(instance);
 
-            // Получаем компонент InteractMenuItem
             var interactMenuItem = instance.GetComponent<InteractMenuItem>();
-
-            // Устанавливаем текст
             interactMenuItem.GetTittle(addedScript.GetText());
-
-            // Устанавливаем этот объект в качестве родителя для префаба
+            interactMenuItem.GetScript();
+            
             instance.transform.SetParent(_content, false);
         }
+
+        _isCreate = true;
     }
     
     public void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            PoolObject.Release(this);
+            Release();
         
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -77,28 +87,31 @@ public class InteractMenu : MonoBehaviour, IInputable
                 _currentIndex = 0;
             
         }
-        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.E))
         {
             var interactMenuItem = _interactMenuItems[_currentIndex].GetComponent<InteractMenuItem>();
+            interactMenuItem.GetPlantConfig(_plantConfig, _plant);
             interactMenuItem.Done();
         }
 
         UpdateItemSelection();
     }
 
+    public void Release()
+    {
+        PlayerInteract.Instance.RemoveInteractObject();
+        PoolObject.Release(this);
+    }
+
     private void UpdateItemSelection()
     {
-        for (int i = 0; i < _interactMenuItems.Count; i++)
+        for (var i = 0; i < _interactMenuItems.Count; i++)
         {
             var interactMenuItem = _interactMenuItems[i].GetComponent<InteractMenuItem>();
             if (i == _currentIndex)
-            {
                 interactMenuItem.SetTextColor(Color.green);
-            }
             else
-            {
-                interactMenuItem.SetTextColor(Color.white);
-            }
+                interactMenuItem.SetTextColor(Color.black);
         }
     }
 
