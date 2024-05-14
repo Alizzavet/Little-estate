@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollowController : MonoBehaviour
@@ -49,24 +46,16 @@ public class CameraFollowController : MonoBehaviour
 
     public void MoveToPlayer()
     {
-        Debug.Log("Камера последовала");
         _offset = _Camera.transform.position - _player.position;
         _offset.y += 2f;
         _currentFollow = _player;
         isMovingToPoint = false;
-
-        var playerTransform = new Vector3();
-        playerTransform = _player.transform.position;
-        Debug.Log(playerTransform);
     }
     
     private void Update()
     {
         if (_currentFollow == null)
-        {
-            Debug.Log("Шото нуль");
             return;
-        }
 
         Vector3 targetCamPos;
         if (!isMovingToPoint)
@@ -80,10 +69,7 @@ public class CameraFollowController : MonoBehaviour
             targetCamPos.x = Mathf.Clamp(targetCamPos.x, minX, maxX);
         }
         else
-        {
-            Debug.Log("Шото не нуль?");
             targetCamPos = _currentFollow.transform.position;
-        }
         
         _Camera.transform.position = Vector3.Lerp(_Camera.transform.position, targetCamPos, Smoothing * Time.deltaTime); 
     }

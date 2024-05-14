@@ -24,7 +24,7 @@ public class InteractMenu : MonoBehaviour, IInputable
 
     public void GetTransform(Transform plant)
     {
-        transform.position = plant.position;
+        transform.position = plant.localPosition;
     }
 
     private void OnEnable()
