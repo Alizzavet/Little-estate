@@ -1,19 +1,17 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlantConfig", menuName = "Configs/Plant Config")]
-public class PlantConfig : ScriptableObject
+public class PlantConfig : DropedItemConfig
 {
-    [SerializeField] private SeedStageConfig _seedStageConfig;
     [SerializeField] private SeedlingStageConfig _seedlingStageConfig;
-    [SerializeField] private SaplingStageConfig _saplingStageConfig;
     [SerializeField] private MatureStageConfig _matureStageConfig;
     [SerializeField] private string _shopItemName;
     [SerializeField] private string _shopDescription;
+    [SerializeField] private int _shopCost;
 
-    public SeedStageConfig SeedStageConfig => _seedStageConfig;
     public SeedlingStageConfig SeedlingStageConfig => _seedlingStageConfig;
-    public SaplingStageConfig SaplingStageConfig => _saplingStageConfig;
     public MatureStageConfig MatureStageConfig => _matureStageConfig;
     public string ShopItemName => _shopItemName;
     public string ShopDescription => _shopDescription;
+    public int ShopCost => _shopCost;
 }

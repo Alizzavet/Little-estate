@@ -3,10 +3,12 @@ using Pool;
 
 public class PlantSpawner : MonoBehaviour
 {
+    [SerializeField] private Transform _playerCollision;
     public static PlantSpawner Instance { get; private set; }
     
     private PlantPreview _plantPreview;
     private PlantConfig _plantConfig;
+    private Renderer _renderer;
 
     private void Awake()
     {
@@ -18,10 +20,16 @@ public class PlantSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && _plantPreview != null)
+        if (Input.GetMouseButtonDown(0) && _plantPreview != null && _plantPreview.IsAvailable())
         {
             GrowPlant(_plantPreview.transform.position);
             DestroyPlantPreview();
+        }
+     
+        if (Input.GetKeyDown(KeyCode.Escape) && _plantPreview != null)
+        {
+            DestroyPlantPreview();
+            Coin.Instance.GetCoin(_plantConfig.ShopCost);
         }
     }
 
@@ -29,18 +37,31 @@ public class PlantSpawner : MonoBehaviour
     {
         var plant = PoolObject.Get<Plant>();
         plant.SetConfig(config);
+        _renderer = plant.GetPlantRenderer();
+        
         return plant;
     }
 
     private void GrowPlant(Vector3 position)
     {
         var plant = SpawnPlant(_plantConfig);
-        plant.transform.position = position;
+        
+        if (Physics.Raycast(position, Vector3.down, out var hit))
+        {
+            if (hit.collider.gameObject.CompareTag("Ground"))
+            {
+                var worldPos = hit.point;
+                worldPos.y = hit.collider.bounds.max.y + _renderer.bounds.size.y / 2; 
+                transform.position = worldPos;
+                plant.transform.position = worldPos;
+            }
+        }
     }
 
     public void CreatePlantPreview(PlantConfig plantConfig)
     {
         var plantPreview = PoolObject.Get<PlantPreview>();
+        plantPreview.transform.position = _playerCollision.position;
         plantPreview.SetPlantSprite(plantConfig.MatureStageConfig.Sprite);
         _plantPreview = plantPreview;
         _plantConfig = plantConfig;

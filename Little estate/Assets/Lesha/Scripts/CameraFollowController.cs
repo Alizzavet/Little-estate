@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollowController : MonoBehaviour
@@ -72,9 +69,7 @@ public class CameraFollowController : MonoBehaviour
             targetCamPos.x = Mathf.Clamp(targetCamPos.x, minX, maxX);
         }
         else
-        {
             targetCamPos = _currentFollow.transform.position;
-        }
         
         _Camera.transform.position = Vector3.Lerp(_Camera.transform.position, targetCamPos, Smoothing * Time.deltaTime); 
     }
