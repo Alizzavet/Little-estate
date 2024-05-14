@@ -1,5 +1,5 @@
-using Pool;
 using UnityEngine;
+using Pool;
 
 public abstract class Plant : MonoBehaviour, IInteractable
 {
@@ -27,7 +27,7 @@ public abstract class Plant : MonoBehaviour, IInteractable
    {
       _plantConfig = newConfig;
       var seedling = _plantConfig;
-      _spriteRenderer.sprite = seedling.SeedSprite;
+      _spriteRenderer.sprite = seedling.Sprite;
       CheckCollider();
    }
 
@@ -80,17 +80,16 @@ public abstract class Plant : MonoBehaviour, IInteractable
 
    public void Interact()
    {
-      if (_currentGrowthStage is MatureStage)
-      {
-         var menu = PoolObject.Get<InteractMenu>(); 
-         menu.Plant(_plantConfig, this); 
-         menu.GetTransform(gameObject.transform);
-      }
-
       if (_dryness.PlantDry)
       {
          Debug.Log("тратим энергию на полив!");
          _dryness.Moisten();
+      }
+      else if(_currentGrowthStage is MatureStage && !_dryness.PlantDry)
+      {
+         var menu = PoolObject.Get<InteractMenu>(); 
+         menu.Plant(_plantConfig, this); 
+         menu.GetTransform(gameObject.transform);
       }
    }
 }

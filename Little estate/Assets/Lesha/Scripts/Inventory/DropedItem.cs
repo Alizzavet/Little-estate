@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class DropedItem : MonoBehaviour, ITakeable
 {
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] protected SpriteRenderer _spriteRenderer;
     
     public int Count { get; private set; }
     
@@ -52,7 +52,7 @@ public class DropedItem : MonoBehaviour, ITakeable
         return DropedItemConfig;
     }
 
-    public void SetData(DropedItemConfig config, Transform enemyPos)
+    public virtual void SetData(DropedItemConfig config, Transform enemyPos)
     {
         DropedItemConfig = config;
         _spriteRenderer.sprite = config.Sprite;
@@ -63,7 +63,7 @@ public class DropedItem : MonoBehaviour, ITakeable
     }
     
 
-    public void SetDropData(DropedItemConfig config, Transform playerPos)
+    public virtual void SetDropData(DropedItemConfig config, Transform playerPos)
     {
         CanTaking = false;
         DropedItemConfig = config;

@@ -16,6 +16,7 @@ public class InteractMenu : MonoBehaviour, IInputable
     private bool _isCreate;
     private PlantConfig _plantConfig;
     private Plant _plant;
+    private Transform _plantTransform;
 
     private void Awake()
     {
@@ -34,7 +35,9 @@ public class InteractMenu : MonoBehaviour, IInputable
     public void GetTransform(Transform plant)
     {
         transform.position = plant.localPosition;
+        _plantTransform = plant;
     }
+    
 
     private void OnEnable()
     {
@@ -90,7 +93,7 @@ public class InteractMenu : MonoBehaviour, IInputable
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.E))
         {
             var interactMenuItem = _interactMenuItems[_currentIndex].GetComponent<InteractMenuItem>();
-            interactMenuItem.GetPlantConfig(_plantConfig, _plant);
+            interactMenuItem.GetPlantConfig(_plantConfig, _plant, _plantTransform);
             interactMenuItem.Done();
         }
 

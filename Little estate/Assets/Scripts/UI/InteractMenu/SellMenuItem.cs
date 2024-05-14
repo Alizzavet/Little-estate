@@ -17,7 +17,7 @@ public class SellMenuItem : MonoBehaviour, IInteractMenuItem
         PoolObject.Release(_plant);
     }
 
-    public void GetConfig(PlantConfig plantConfig, Plant plant)
+    public void GetConfig(PlantConfig plantConfig, Plant plant, Transform plantTransform)
     {
         _currentPlant = plantConfig;
         _plant = plant;

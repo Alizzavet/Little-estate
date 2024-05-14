@@ -12,11 +12,10 @@ public class InteractMenuItem : MonoBehaviour
         _iInteractMenuItem = GetComponent<IInteractMenuItem>();
     }
 
-    public void GetPlantConfig(PlantConfig plantConfig, Plant plant)
+    public void GetPlantConfig(PlantConfig plantConfig, Plant plant, Transform transform)
     {
-        _iInteractMenuItem.GetConfig(plantConfig, plant);
+        _iInteractMenuItem.GetConfig(plantConfig, plant, transform);
     }
-
 
     public void GetTittle(string text)
     {
