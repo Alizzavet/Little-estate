@@ -31,6 +31,7 @@ public class BatEnemy : Enemy
 
     private int _patrolRadius = 20;
 
+    private int damage = 10;
 
     private Vector3 _verticalVelocity;
     private void Start()
@@ -236,10 +237,12 @@ public class BatEnemy : Enemy
     #endregion
 
 
-
-
-
-    
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        var player = hit.gameObject.GetComponent<PlayerHealth>();
+        if (player != null)
+            player.TakeDamage(damage);
+    }
 
 
     private void OnDrawGizmos()
