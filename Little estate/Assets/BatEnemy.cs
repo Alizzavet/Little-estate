@@ -10,12 +10,26 @@ public class BatEnemy : Enemy
 
     [SerializeField] private Collider _collider;
 
+    private bool _isPunching;
 
 
-    private int _punchRadius = 10;
+    private Transform _player;
+    private CharacterController _characterController;
+
+    [SerializeField] private float _punchDist = 5f;
+    [SerializeField] private float _punchSpeed = 5f;
+
+    private States _currentState;
+    private void Start()
+    {
+        _characterController = GetComponent<CharacterController>();
+        _currentState = States.Patrol;
+    }
+
+    private int _punchRadius = 7;
 
     private int _patrolRadius = 20;
-    private Transform _player;
+
     [SerializeField] private float _moveSpeed;
 
     public void SetPlayer(Transform player)
@@ -26,69 +40,110 @@ public class BatEnemy : Enemy
     {
         _player = null;
     }
+
+    private bool _isGrounded;
+    [SerializeField] private Transform _groundetPos;
     [SerializeField] private LayerMask _layerMask;
 
+    private Vector3 _verticalVelocity;
+
+    private void Gravitation()
+    {
+        _isGrounded = Physics.CheckSphere(_groundetPos.position, 0.5f, _layerMask);
+
+        if (_isGrounded)
+            _verticalVelocity.y += -0.5f;
+        else
+            _verticalVelocity.y += -9.81f;
+        
+        
+        _characterController.Move(_verticalVelocity * Time.deltaTime);
+    }
     private void Update()
     {
-        if (_isPunching) return;
+
+        Gravitation();
         
-        
-        var check = Physics.OverlapSphere(transform.position, _patrolRadius, _layerMask);
+        switch (_currentState)
+        {
+            case States.Patrol:
+                Patrol();
+                break;
+            case States.Chase:
+                Chase();
+                break;
+            case States.Attack:
+                if (_player != null && !_isPunching)
+                {
+                    _isPunching = true;
+                    StartCoroutine(PunchPlayer());
+                }
+                break;
+        }
+    }
+
+    private void Patrol()
+    {
+        var check = Physics.OverlapSphere(transform.position, _patrolRadius);
 
         foreach (var obj in check)
         {
             var player = obj.GetComponent<PlayerMoveController>();
             if (player != null)
+            {
                 SetPlayer(player.transform);
-            
+                _currentState = States.Chase;
+            }
         }
+    }
 
+    private void Chase()
+    {
         if (_player != null)
         {
             if (Physics.Raycast(transform.position, _player.position - transform.position, out var hit, _patrolRadius))
             {
                 if (hit.transform == _player)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, _player.position, Time.deltaTime * _moveSpeed);
+                    _characterController.Move(((_player.position - transform.position).normalized * (Time.deltaTime * _moveSpeed)));
                     
-                    var checkPunch = Physics.OverlapSphere(transform.position, _punchRadius, _layerMask);
+                    var checkPunch = Physics.OverlapSphere(transform.position, _punchRadius);
                     foreach (var obj in checkPunch)
                     {
                         var player = obj.GetComponent<PlayerMoveController>();
                         if (player != null)
-                            StartCoroutine(PunchPlayer());
+                            _currentState = States.Attack;
                     }
                 }
             }
         }
     }
-    private bool _isPunching = false;
+
+
 
     IEnumerator PunchPlayer()
     {
-        _isPunching = true;
-        
-        Vector3 originalPosition = transform.position;
-        Vector3 punchPosition = _player.position + (_player.position - transform.position).normalized * 5;
-        float moveSpeed = 5f;
-        float startTime = Time.time;
 
-        while (Time.time < startTime + 1)
-        {
-            // Вычисляем направление движения
-            var direction = (punchPosition - originalPosition).normalized;
+        var playerpos = _player.position;
+        var direction = (playerpos - transform.position).normalized;
         
-            // Обновляем позицию объекта
-            transform.position += direction * (moveSpeed * 3 * Time.deltaTime) ;
-        
-            yield return null;
-        }
+        var remainingDistance = _punchDist;
         yield return new WaitForSeconds(1);
 
+        while (remainingDistance > 0)
+        {
+            float distanceToMove = _punchSpeed * Time.deltaTime;
+            _characterController.Move(direction * distanceToMove);
+            remainingDistance -= distanceToMove;
+            yield return null;
+        }
+        
+        yield return new WaitForSeconds(1);
+        _currentState = States.Patrol;
         _isPunching = false;
+
     }
-
-
+    
     public override void OnDeath()
     {
         Debug.Log("умер чел");
@@ -104,13 +159,10 @@ public class BatEnemy : Enemy
     }
 }
 
-
-/*if (_player == null)
+public enum States
 {
-    _meshAgent.destination = transform.position;
+    Patrol,
+    Chase,
+    Attack
 }
-else if (_meshAgent.destination != _player.transform.position + Vector3.one)
-{
-    _meshAgent.destination = _player.transform.position;
-}*/
-/*[SerializeField] private NavMeshAgent _meshAgent;*/
+
