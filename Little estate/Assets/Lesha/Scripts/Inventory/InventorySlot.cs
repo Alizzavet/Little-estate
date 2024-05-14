@@ -70,6 +70,22 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         UpdateInfo();
     }
     
+    public void ClearOneItemFromSlot()
+    {
+        if (_currentCount > 0)
+        {
+            _currentCount--;
+
+            if (_currentCount == 0)
+            {
+                _myItem = null;
+                _sprite.sprite = null;
+            }
+
+            UpdateInfo();
+        }
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)

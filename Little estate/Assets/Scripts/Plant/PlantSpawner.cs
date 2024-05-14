@@ -1,14 +1,18 @@
+using System;
 using UnityEngine;
 using Pool;
 
 public class PlantSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _playerCollision;
+
     public static PlantSpawner Instance { get; private set; }
-    
+    public event Action<PlantConfig> IsGrow;
+
     private PlantPreview _plantPreview;
     private PlantConfig _plantConfig;
     private Renderer _renderer;
+    private bool _limiter;
 
     private void Awake()
     {
@@ -18,18 +22,39 @@ public class PlantSpawner : MonoBehaviour
             Instance = this;
     }
 
+    private void Start()
+    {
+        PlayerInventory.Instance.IsInventoryUse += InventoryLimiter;
+    }
+
+    private void InventoryLimiter(bool value)
+    {
+        _limiter = value;
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && _plantPreview != null && _plantPreview.IsAvailable())
         {
             GrowPlant(_plantPreview.transform.position);
             DestroyPlantPreview();
+            
+            if(_limiter) 
+                IsGrow.Invoke(_plantConfig);
         }
      
         if (Input.GetKeyDown(KeyCode.Escape) && _plantPreview != null)
         {
-            DestroyPlantPreview();
-            Coin.Instance.GetCoin(_plantConfig.ShopCost);
+            if (!_limiter)
+            {
+                DestroyPlantPreview(); 
+                Coin.Instance.GetCoin(_plantConfig.ShopCost);
+            }
+            else
+            {
+                DestroyPlantPreview();
+                InventoryLimiter(false);
+            }
         }
     }
 
@@ -73,5 +98,10 @@ public class PlantSpawner : MonoBehaviour
             PoolObject.Release(_plantPreview);
         
         _plantPreview = null;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerInventory.Instance.IsInventoryUse -= InventoryLimiter;
     }
 }

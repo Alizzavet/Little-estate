@@ -1,9 +1,11 @@
+using System;
 using Pool;
 using UnityEngine;
 
 public class PlayerInventory : InventoryManager, IInputable
 {
     public static PlayerInventory Instance;
+    public event Action<bool> IsInventoryUse; 
 
     private ChestInventory _currentChest;
 
@@ -11,6 +13,11 @@ public class PlayerInventory : InventoryManager, IInputable
     {
         if (Instance == null)
             Instance = this;
+    }
+
+    private void Start()
+    {
+        PlantSpawner.Instance.IsGrow += ClearSeedItem;
     }
 
     public void SetChest(ChestInventory chest)
@@ -84,6 +91,20 @@ public class PlayerInventory : InventoryManager, IInputable
 
         }
         
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (_inventorySlots[_selectedSlotIndex]._myItem is PlantConfig plantConfig)
+            {
+                if (IsInventoryUse != null)
+                    IsInventoryUse.Invoke(true);
+                
+                PlantSpawner.Instance.CreatePlantPreview(plantConfig);
+            }
+            else
+            {
+                Debug.Log("Предмет в слоте не растение.");
+            }
+        }
     }
     public new bool GetSlot(InventorySlot item)
     {
@@ -135,5 +156,24 @@ public class PlayerInventory : InventoryManager, IInputable
         
         if (_currentChest.GetSlot(slot))
             slot.DropItem();
+    }
+    
+    public void ClearOneItem()
+    {
+        _inventorySlots[_selectedSlotIndex].ClearOneItemFromSlot();
+    }
+
+    private void ClearSeedItem(PlantConfig seedConfig)
+    {
+        if (_inventorySlots[_selectedSlotIndex]._myItem is PlantConfig plantConfig)
+        {
+            if(plantConfig == seedConfig) 
+                ClearOneItem();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        PlantSpawner.Instance.IsGrow -= ClearSeedItem;
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Birch
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: 7eb9804e3d9a96241a91028eb738ec56, type: 3}
-  _countToSpawn: 2
+  _countToSpawn: 3
   _id: "\u0411\u0435\u0440\u0435\u0437\u0430"
   _count: 1
   _seedlingStageConfig: {fileID: 11400000, guid: 42002e3261999ca4796e1a35aaae4f70, type: 2}
