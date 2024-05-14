@@ -30,11 +30,11 @@ public class EnemyTest : MonoBehaviour, IDamagable
 
     private void Update()
     {
-        if (_player == null)
+        /*if (_player == null)
             _meshAgent.destination = transform.position;
         
         
         if(_player != null && _meshAgent.destination != _player.transform.position + Vector3.one)
-            _meshAgent.destination = _player.transform.position;
+            _meshAgent.destination = _player.transform.position;*/
     }
 }
