@@ -20,10 +20,15 @@ public class CameraFollowController : MonoBehaviour
 
 
     private float maxX;
+    private float minX;
 
     public void SetX(float x)
     {
         maxX = x;
+    }
+    public void SetMinX(float x)
+    {
+        minX = x;
     }
     private void Awake()
     {
@@ -67,8 +72,7 @@ public class CameraFollowController : MonoBehaviour
             targetCamPos.z = targetZPosition;
         
             
-            //TODO Ограничение движения камеры. При генерации уровня должно меняться 
-            var minX = 0f; 
+
             targetCamPos.x = Mathf.Clamp(targetCamPos.x, minX, maxX);
         }
         else
