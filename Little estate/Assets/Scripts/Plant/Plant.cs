@@ -65,7 +65,7 @@ public abstract class Plant : MonoBehaviour, IInteractable
       var sprite = _spriteRenderer.sprite;
       var size = _collider.size;
       size = sprite.bounds.size;
-      var zSize = 20f; 
+      var zSize = 2f; 
       size = new Vector3(size.x, size.y, zSize);
       _collider.size = size;
       _collider.center = sprite.bounds.center;

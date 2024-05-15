@@ -5,7 +5,7 @@ public class PlantPreview : MonoBehaviour, IInputable
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _unAvailable; 
     [SerializeField] private float _moveInterval = 0.3f;
-    [SerializeField] private float _movementStep = 50f;
+    [SerializeField] private float _movementStep = 3f;
 
     private float _lastMoveTime;
     private float _fixedHeight;   
@@ -97,7 +97,7 @@ public class PlantPreview : MonoBehaviour, IInputable
 
         var size = _collider.size;
         size = sprite.bounds.size;
-        var zSize = 20f; 
+        var zSize = 2f; 
         size = new Vector3(size.x, size.y, zSize);
         _collider.size = size;
         _collider.center = sprite.bounds.center;
