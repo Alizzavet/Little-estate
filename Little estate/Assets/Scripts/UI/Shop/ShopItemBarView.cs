@@ -19,4 +19,13 @@ public class ShopItemBarView : MonoBehaviour
         _description.text = plantConfig.ShopDescription;
         _itemCoin.sprite = _coin;
     }
+
+    public void SedBuildingData(OutbuildingConfig outbuildingConfig)
+    {
+        _itemIcon.sprite = outbuildingConfig.BuildingSprite;
+        _cost.text = outbuildingConfig.ShopCost.ToString();
+        _itemName.text = outbuildingConfig.ShopItemName;
+        _description.text = outbuildingConfig.ShopDescription;
+        _itemCoin.sprite = _coin;
+    }
 }

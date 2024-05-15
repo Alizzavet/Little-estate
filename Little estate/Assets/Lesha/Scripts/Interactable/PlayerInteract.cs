@@ -20,7 +20,7 @@ public class PlayerInteract : MonoBehaviour, IInputable
 
     private void Start()
     {
-        _text.gameObject.SetActive(false);
+        ControlText(false);
         InputSystem.Instance.SetInput(this);
     }
 
@@ -29,7 +29,7 @@ public class PlayerInteract : MonoBehaviour, IInputable
         if (other.GetComponent<IInteractable>() != null)
         {
             _interactableObj = other.GetComponent<IInteractable>();
-            _text.gameObject.SetActive(true);
+            ControlText(true);
         }
     }
     
@@ -49,6 +49,11 @@ public class PlayerInteract : MonoBehaviour, IInputable
     public void RemoveInteractObject()
     {
         _interactableObj = null;
-        _text.gameObject.SetActive(false);
+        ControlText(false);
+    }
+
+    public void ControlText(bool value)
+    {
+        _text.gameObject.SetActive(value);
     }
 }

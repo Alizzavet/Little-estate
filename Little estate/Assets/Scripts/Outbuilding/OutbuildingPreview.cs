@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlantPreview : ItemPreview
+public class OutbuildingPreview : ItemPreview
 {
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _unAvailable;
@@ -25,7 +25,7 @@ public class PlantPreview : ItemPreview
         }
     }
 
-    public void SetPlantSprite(Sprite sprite)
+    public void SetBuildSprite(Sprite sprite)
     {
         _spriteRenderer.sprite = sprite;
         _spriteRenderer.color = Color.green;
@@ -41,11 +41,9 @@ public class PlantPreview : ItemPreview
         if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, _groundLayer))
         {
             Vector3 position = transform.position;
-            position.y = hit.collider.bounds.max.y + (_collider.bounds.size.y / 2);
+            position.y = hit.collider.bounds.max.y;
             transform.position = position;
             _yPosition = position;
         }
     }
 }
-
-

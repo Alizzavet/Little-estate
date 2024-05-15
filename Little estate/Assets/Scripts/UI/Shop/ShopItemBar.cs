@@ -10,6 +10,8 @@ public class ShopItemBar : MonoBehaviour
     public event Action IsShop;
     
     private PlantConfig _plantConfig;
+    private OutbuildingConfig _outbuildingConfig;
+    private bool _isPlant;
 
     private void OnEnable()
     {
@@ -18,20 +20,43 @@ public class ShopItemBar : MonoBehaviour
 
     public void SetData(PlantConfig plantConfig)
     {
+        _isPlant = true;
         _plantConfig = plantConfig;
         _itemBarView.SetData(plantConfig);
     }
 
+    public void SedBuildingData(OutbuildingConfig outbuildingConfig)
+    {
+        _isPlant = false;
+        _outbuildingConfig = outbuildingConfig;
+        _itemBarView.SedBuildingData(outbuildingConfig);
+    }
+    
+
     private void OnShopItemButtonClicked()
     {
-        if (Coin.Instance.CurrentCoinCount() < _plantConfig.ShopCost)
-            return;
+        if (_isPlant)
+        {
+            if (Coin.Instance.CurrentCoinCount() < _plantConfig.ShopCost)
+                return;
 
-        PlantSpawner.Instance.CreatePlantPreview(_plantConfig);
-        Coin.Instance.SpendCoin(_plantConfig.ShopCost);
+            PlantSpawner.Instance.CreatePlantPreview(_plantConfig);
+            Coin.Instance.SpendCoin(_plantConfig.ShopCost);
         
-        if (IsShop != null)
-            IsShop.Invoke();
+            if (IsShop != null)
+                IsShop.Invoke();
+        }
+        else if(!_isPlant)
+        {
+            if (Coin.Instance.CurrentCoinCount() < _outbuildingConfig.ShopCost)
+                return;
+            
+            OutbuildingSpawner.Instance.CreateBuildingPreview(_outbuildingConfig);
+            Coin.Instance.SpendCoin(_outbuildingConfig.ShopCost);
+            
+            if (IsShop != null)
+                IsShop.Invoke();
+        }
     }
 
     private void OnDisable()

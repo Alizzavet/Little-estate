@@ -42,6 +42,7 @@ public class InteractMenu : MonoBehaviour, IInputable
     private void OnEnable()
     {
         InputSystem.Instance.SetTimedInput(this);
+        PlayerInteract.Instance.ControlText(false);
         
         if(!_isCreate)
             CreateItems();
@@ -114,7 +115,7 @@ public class InteractMenu : MonoBehaviour, IInputable
             if (i == _currentIndex)
                 interactMenuItem.SetTextColor(Color.green);
             else
-                interactMenuItem.SetTextColor(Color.black);
+                interactMenuItem.SetTextColor(Color.white);
         }
     }
 

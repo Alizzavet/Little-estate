@@ -797,6 +797,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &383944817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 383944818}
+  - component: {fileID: 383944819}
+  m_Layer: 0
+  m_Name: BuildingSpavner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &383944818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383944817}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 758388712}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383944819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383944817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bcf8fbbf3390084e9e8a2590b458a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCollision: {fileID: 4678164119561732033}
 --- !u!1 &395984488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,6 +1259,8 @@ MonoBehaviour:
   _plantConfigs:
   - {fileID: 11400000, guid: 751b10254b4704447a28dd3f40f90ae9, type: 2}
   - {fileID: 11400000, guid: efc7d1b7e4f8e7e47a9b0f975852050a, type: 2}
+  _outbuildingConfigs:
+  - {fileID: 11400000, guid: e8d175c3551b6dc41a9962b507234f6b, type: 2}
   _treeButton: {fileID: 27868866}
   _fruitPlantButton: {fileID: 1516589023}
   _buildingButton: {fileID: 1349309327}
@@ -1607,6 +1654,7 @@ Transform:
   - {fileID: 1709831232}
   - {fileID: 1809226162}
   - {fileID: 1475041985}
+  - {fileID: 383944818}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
