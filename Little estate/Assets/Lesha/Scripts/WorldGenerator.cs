@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,21 +19,24 @@ public class WorldGenerator : MonoBehaviour
 
     [SerializeField] private GameObject _playerPrefab;
 
+    [SerializeField] private CinemachineVirtualCamera _camera;
+    
     private void Start()
     {
         var startRoom = Instantiate(_startRoom.gameObject, new Vector3(120f, 0f, 0f), Quaternion.Euler(0, 90, 0));
 
-        
         Generate();
         // отнимаю 40, чтобы не показывать край карты
         //CameraFollowController.Instance.SetX(_spawnedFloors[_spawnedFloors.Count - 1].EndPoint.position.x - 40f);
-        CameraFollowController.Instance.SetX(_spawnedFloors[_spawnedFloors.Count - 1].EndPoint.position.x - 40f);
-        CameraFollowController.Instance.SetMinX(_startRoom._minXPos.position.x);
+        /*CameraFollowController.Instance.SetX(_spawnedFloors[_spawnedFloors.Count - 1].EndPoint.position.x - 40f);
+        CameraFollowController.Instance.SetMinX(_startRoom._minXPos.position.x);*/
         _startRoom = startRoom.GetComponent<StartRoom>();
 
         
         // спавн игрока
-        Instantiate(_playerPrefab, _startRoom._playerSpawnPos.position, quaternion.identity);
+        var player = Instantiate(_playerPrefab, _startRoom._playerSpawnPos.position, quaternion.identity);
+
+        _camera.Follow = player.transform;
     }
 
     private void Generate()
