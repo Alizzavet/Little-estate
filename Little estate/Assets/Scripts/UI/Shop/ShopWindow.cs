@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 
@@ -6,6 +7,8 @@ public class ShopWindow : MonoBehaviour
     [SerializeField] private Vector3 _targetPosition; 
     [SerializeField] private float _animationDuration = 1f;
     [SerializeField] private Vector3 _startPosition;
+
+    public event Action<bool> ToScene;
 
     private void MoveToTargetPosition(Vector3 position, float duration)
     {
@@ -21,5 +24,7 @@ public class ShopWindow : MonoBehaviour
     public void MoveToBack()
     {
         MoveToTargetPosition(_startPosition, _animationDuration);
+        
+        ToScene.Invoke(false);
     }
 }

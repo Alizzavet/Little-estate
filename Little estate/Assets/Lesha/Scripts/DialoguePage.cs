@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialoguePage : Page, IInputable
 {
