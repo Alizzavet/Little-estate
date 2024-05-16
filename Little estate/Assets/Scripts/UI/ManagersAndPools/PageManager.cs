@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2012-2023 FuryLion Group. All Rights Reserved.
 
+using System;
 using UnityEngine;
 
 namespace UI
@@ -14,6 +15,11 @@ namespace UI
                 Destroy(gameObject);
             else
                 _instance = this;
+        }
+
+        private void Start()
+        {
+            OpenPage<TransitionStart>();
         }
 
         public static T OpenPage<T>(Page sender = null) where T : Page

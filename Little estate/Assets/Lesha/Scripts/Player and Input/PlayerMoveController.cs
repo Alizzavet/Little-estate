@@ -17,8 +17,14 @@ public class PlayerMoveController : MonoBehaviour, IInputable
     [SerializeField] private LayerMask _layerMask;
     
     [SerializeField] private PlayerInventory _playerInventory;
-    private void Start()
+
+    private PlayerFightController _playerFightController;
+
+
+
+    private void OnEnable()
     {
+        _playerFightController = GetComponent<PlayerFightController>();
         InputSystem.Instance.SetInput(this);
         CameraFollowController.Instance.SetPlayer(transform);
         CameraFollowController.Instance.MoveToPlayer();
@@ -26,7 +32,7 @@ public class PlayerMoveController : MonoBehaviour, IInputable
 
     private void Update()
     {
-        _characterController.Move(_verticalVelocity * Time.deltaTime);
+        Gravitation();
     }
 
     private void Move()
@@ -56,17 +62,18 @@ public class PlayerMoveController : MonoBehaviour, IInputable
 
     private void Gravitation()
     {
-        _isGrounded = Physics.CheckSphere(_groundetPos.position, 0.5f, _layerMask);
-
-        if (_isGrounded)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-                _verticalVelocity.y = Mathf.Sqrt(5 * -2f * -9.81f);
-        }
-        else
-            _verticalVelocity.y += -15 * Time.deltaTime;
-
+        if (_characterController.isGrounded && _verticalVelocity.y < 0)
+            _verticalVelocity.y = 0f;
         
+        _verticalVelocity.y += -9.81f * 2 * Time.deltaTime;
+        _characterController.Move(_verticalVelocity * Time.deltaTime);
+        
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_groundetPos.position, 0.5f);
     }
 
     private void Flip()
@@ -86,10 +93,24 @@ public class PlayerMoveController : MonoBehaviour, IInputable
         }
     }
 
+    private void Jumping()
+    {
+        if (!_characterController.isGrounded) 
+            return;
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+            _verticalVelocity.y = Mathf.Sqrt(5 * -2f * -9.81f);
+    }
+    
+
     public void HandleInput()
     {
+        
+        if (_playerFightController._isAttacking)
+            return;
+        
+        Jumping();
         Move();
-        Gravitation();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -103,8 +124,6 @@ public class PlayerMoveController : MonoBehaviour, IInputable
         // занесение предмета в инвентарь и удаление из мира
         if(_playerInventory.AddItemFromWorld(item.DropedItemConfig))
             item.Take();
-
-
-
+        
     }
 }
