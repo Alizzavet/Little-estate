@@ -1,14 +1,24 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
+
+/*
+private float time = 3;
+private float timer = 0;
+
+private void Update()
+{
+    timer += Time.deltaTime;
+    if (timer > time)
+    {
+        DoSomething();
+        timer = 0;
+    }
+}
+*/
 
 public class BatEnemy : Enemy
 {
-
     [SerializeField] private float _punchDist = 5f;
     [SerializeField] private float _punchSpeed = 5f;
     [SerializeField] private Transform _groundetPos;
@@ -24,7 +34,7 @@ public class BatEnemy : Enemy
 
     private LineRenderer _line;
     private States _currentState;
-    
+
     private bool _isGrounded;
 
     private int _punchRadius = 7;
@@ -34,6 +44,7 @@ public class BatEnemy : Enemy
     private int damage = 10;
 
     private Vector3 _verticalVelocity;
+
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
@@ -41,22 +52,21 @@ public class BatEnemy : Enemy
         _currentState = States.Patrol;
     }
 
-
-
     public void SetPlayer(Transform player)
     {
         _player = player;
     }
+
     public void UnsetPlayer()
     {
         _player = null;
     }
 
-
     public override void OnDeath()
     {
         SpawnItems();
     }
+
     private void Gravitation()
     {
         _isGrounded = Physics.CheckSphere(_groundetPos.position, 0.5f, _layerMask);
@@ -65,22 +75,23 @@ public class BatEnemy : Enemy
             _verticalVelocity.y += -0.5f;
         else
             _verticalVelocity.y += -9.81f;
-        
-        
+
+
         _characterController.Move(_verticalVelocity * Time.deltaTime);
     }
+
     private bool isPatrolling = false;
+
     private void Update()
     {
-
         Gravitation();
-        
+
         switch (_currentState)
         {
             case States.Patrol:
                 if (!isPatrolling)
                     StartCoroutine(Patrol());
-                
+
                 FindPlayer();
                 break;
             case States.Chase:
@@ -92,10 +103,11 @@ public class BatEnemy : Enemy
                     _isPunching = true;
                     StartCoroutine(PunchPlayer());
                 }
+
                 break;
         }
     }
-    
+
     private void Flip()
     {
         _mFacingRight = !_mFacingRight;
@@ -104,10 +116,10 @@ public class BatEnemy : Enemy
         var theScale = transform1.localScale;
         theScale.x *= -1;
         transform1.localScale = theScale;
-        
     }
 
     #region Patrol
+
     private IEnumerator Patrol()
     {
         _characterController.Move(Vector3.zero);
@@ -122,8 +134,8 @@ public class BatEnemy : Enemy
                 Flip();
                 break;
         }
-        
-        Ray ray = new Ray(transform.position, randomDirection);
+
+        var ray = new Ray(transform.position, randomDirection);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, 4))
@@ -131,9 +143,9 @@ public class BatEnemy : Enemy
         else
             // Если луч не врезался - идем в ту сторону на расстоянии 4
             _characterController.Move(randomDirection * _moveSpeed * Time.deltaTime);
-        
+
         yield return new WaitForSeconds(2);
-    
+
         isPatrolling = false;
     }
 
@@ -152,14 +164,13 @@ public class BatEnemy : Enemy
             }
         }
     }
-    
 
     #endregion
 
     #region Chase
+
     private void Chase()
     {
-        
         if (_player != null)
         {
             if (Physics.Raycast(transform.position, _player.position - transform.position, out var hit, _patrolRadius))
@@ -178,7 +189,7 @@ public class BatEnemy : Enemy
                     }
 
                     _characterController.Move((direction * (Time.deltaTime * _moveSpeed)));
-                    
+
                     var checkPunch = Physics.OverlapSphere(transform.position, _punchRadius);
                     foreach (var obj in checkPunch)
                     {
@@ -191,18 +202,17 @@ public class BatEnemy : Enemy
         }
     }
 
-    
-
     #endregion
 
     private float _remainingDistance;
+
     #region Attack
+
     IEnumerator PunchPlayer()
     {
-
         var playerpos = _player.position;
         var direction = (playerpos - transform.position).normalized;
-        
+
         switch (direction.x)
         {
             case > 0 when !_mFacingRight:
@@ -210,14 +220,14 @@ public class BatEnemy : Enemy
                 Flip();
                 break;
         }
-        
+
         _remainingDistance = _punchDist;
-        
+
         _line.SetPosition(0, transform.position); // начальная точка линии
         _line.SetPosition(1, playerpos); // конечная точка линии
         _line.enabled = true;
-        
-        
+
+
         yield return new WaitForSeconds(1);
         _line.enabled = false;
 
@@ -228,13 +238,11 @@ public class BatEnemy : Enemy
             _remainingDistance -= distanceToMove;
             yield return null;
         }
-        
+
         yield return new WaitForSeconds(1);
         _currentState = States.Patrol;
         _isPunching = false;
-
     }
-    
 
     #endregion
 
@@ -249,9 +257,7 @@ public class BatEnemy : Enemy
             StopCoroutine(PunchPlayer());
             _characterController.Move(Vector3.zero);
             _currentState = States.Patrol;
-            
         }
-
     }
 
 
@@ -259,7 +265,7 @@ public class BatEnemy : Enemy
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _patrolRadius);
-        
+
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, _punchRadius);
     }
@@ -271,4 +277,3 @@ public enum States
     Chase,
     Attack
 }
-

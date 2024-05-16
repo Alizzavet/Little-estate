@@ -32,6 +32,7 @@ public class PlayerMoveController : MonoBehaviour, IInputable
 
     private void Update()
     {
+        Gravitation();
         _characterController.Move(_verticalVelocity * Time.deltaTime);
     }
 
@@ -63,16 +64,13 @@ public class PlayerMoveController : MonoBehaviour, IInputable
     private void Gravitation()
     {
         _isGrounded = Physics.CheckSphere(_groundetPos.position, 0.5f, _layerMask);
+        _verticalVelocity.y += -15 * Time.deltaTime;
+    }
 
-        if (_isGrounded)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-                _verticalVelocity.y = Mathf.Sqrt(5 * -2f * -9.81f);
-        }
-        else
-            _verticalVelocity.y += -15 * Time.deltaTime;
-
-        
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_groundetPos.position, 0.5f);
     }
 
     private void Flip()
@@ -92,13 +90,23 @@ public class PlayerMoveController : MonoBehaviour, IInputable
         }
     }
 
+    private void Jumping()
+    {
+        if (!_isGrounded) 
+            return;
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+            _verticalVelocity.y = Mathf.Sqrt(5 * -2f * -9.81f);
+    }
+    
+
     public void HandleInput()
     {
-        Gravitation();
         
         if (_playerFightController._isAttacking)
             return;
         
+        Jumping();
         Move();
     }
 

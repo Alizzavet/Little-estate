@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamagable
@@ -21,8 +18,11 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         _animator.SetTrigger("damage");
 
         // Отскок
-        Vector3 knockbackDirection = -hitDirection.normalized;
+        var knockbackDirection = -hitDirection.normalized;
         GetComponent<CharacterController>().Move((knockbackDirection + Vector3.up) * _knockbackForce * -1);
+
+
+        InputSystem.Instance.StartCoroutine(InputSystem.Instance.SetPauseInput(0.5f));
     }
 
     public void TakeDamage(int damageCount)
