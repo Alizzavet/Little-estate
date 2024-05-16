@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
         // Отскок
         var knockbackDirection = -hitDirection.normalized;
-        GetComponent<CharacterController>().Move((knockbackDirection + Vector3.up) * _knockbackForce * -1);
+        GetComponent<CharacterController>().Move(knockbackDirection * _knockbackForce * -1);
 
 
         InputSystem.Instance.StartCoroutine(InputSystem.Instance.SetPauseInput(0.5f));

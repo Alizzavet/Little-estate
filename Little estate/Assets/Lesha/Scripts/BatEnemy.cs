@@ -36,6 +36,7 @@ public class BatEnemy : Enemy
     private States _currentState;
 
     private bool _isGrounded;
+    private float _remainingDistance;
 
     private int _punchRadius = 7;
 
@@ -204,7 +205,6 @@ public class BatEnemy : Enemy
 
     #endregion
 
-    private float _remainingDistance;
 
     #region Attack
 

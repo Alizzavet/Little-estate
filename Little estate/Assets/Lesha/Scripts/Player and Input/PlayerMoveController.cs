@@ -33,7 +33,6 @@ public class PlayerMoveController : MonoBehaviour, IInputable
     private void Update()
     {
         Gravitation();
-        _characterController.Move(_verticalVelocity * Time.deltaTime);
     }
 
     private void Move()
@@ -63,8 +62,12 @@ public class PlayerMoveController : MonoBehaviour, IInputable
 
     private void Gravitation()
     {
-        _isGrounded = Physics.CheckSphere(_groundetPos.position, 0.5f, _layerMask);
-        _verticalVelocity.y += -15 * Time.deltaTime;
+        if (_characterController.isGrounded && _verticalVelocity.y < 0)
+            _verticalVelocity.y = 0f;
+        
+        _verticalVelocity.y += -9.81f * 2 * Time.deltaTime;
+        _characterController.Move(_verticalVelocity * Time.deltaTime);
+        
     }
 
     private void OnDrawGizmos()
@@ -92,7 +95,7 @@ public class PlayerMoveController : MonoBehaviour, IInputable
 
     private void Jumping()
     {
-        if (!_isGrounded) 
+        if (!_characterController.isGrounded) 
             return;
         
         if (Input.GetKeyDown(KeyCode.Space))
@@ -121,8 +124,6 @@ public class PlayerMoveController : MonoBehaviour, IInputable
         // занесение предмета в инвентарь и удаление из мира
         if(_playerInventory.AddItemFromWorld(item.DropedItemConfig))
             item.Take();
-
-
-
+        
     }
 }
