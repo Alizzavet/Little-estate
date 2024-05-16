@@ -19,6 +19,13 @@ public class PlayerFightController : MonoBehaviour, IInputable
         InputSystem.Instance.SetInput(this);
     }
 
+    public void CanAttacking()
+    {
+        _canAttack = true;
+        _isAttacking = false;
+        _combo = 0;
+    }
+
     private void Attack()
     {
         var hitEnemies = Physics.OverlapSphere(_punchPosition.position, 1f);

@@ -110,6 +110,7 @@ public class BatEnemy : Enemy
     #region Patrol
     private IEnumerator Patrol()
     {
+        _characterController.Move(Vector3.zero);
         isPatrolling = true;
         Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
 
@@ -194,6 +195,7 @@ public class BatEnemy : Enemy
 
     #endregion
 
+    private float _remainingDistance;
     #region Attack
     IEnumerator PunchPlayer()
     {
@@ -209,7 +211,7 @@ public class BatEnemy : Enemy
                 break;
         }
         
-        var remainingDistance = _punchDist;
+        _remainingDistance = _punchDist;
         
         _line.SetPosition(0, transform.position); // начальная точка линии
         _line.SetPosition(1, playerpos); // конечная точка линии
@@ -219,11 +221,11 @@ public class BatEnemy : Enemy
         yield return new WaitForSeconds(1);
         _line.enabled = false;
 
-        while (remainingDistance > 0)
+        while (_remainingDistance > 0)
         {
             float distanceToMove = _punchSpeed * Time.deltaTime;
             _characterController.Move(direction * distanceToMove);
-            remainingDistance -= distanceToMove;
+            _remainingDistance -= distanceToMove;
             yield return null;
         }
         
@@ -241,7 +243,15 @@ public class BatEnemy : Enemy
     {
         var player = hit.gameObject.GetComponent<PlayerHealth>();
         if (player != null)
-            player.TakeDamage(damage);
+        {
+            player.TakeDamage(damage, hit.moveDirection);
+            _remainingDistance = -1;
+            StopCoroutine(PunchPlayer());
+            _characterController.Move(Vector3.zero);
+            _currentState = States.Patrol;
+            
+        }
+
     }
 
 
