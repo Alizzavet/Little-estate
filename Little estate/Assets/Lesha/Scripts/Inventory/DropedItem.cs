@@ -61,9 +61,8 @@ public class DropedItem : MonoBehaviour, ITakeable
         _startPos = enemyPos;
         StartCoroutine(IdleAnimation());
     }
-    
 
-    public virtual void SetDropData(DropedItemConfig config, Transform playerPos)
+    public void SetDropData(DropedItemConfig config, Transform playerPos)
     {
         CanTaking = false;
         DropedItemConfig = config;
@@ -71,13 +70,12 @@ public class DropedItem : MonoBehaviour, ITakeable
         Count = config.Count;
         
         var randomX = Random.Range(-3f, 3f);
-        var randomY = -1f;
         var randomZ = Random.Range(-3f, 3f);
+        var _yPos = -1;
         
-        var newPosition = playerPos.position + new Vector3(randomX, randomY, randomZ);
+        var newPosition = playerPos.position + new Vector3(randomX, _yPos, randomZ);
         
         transform.position = newPosition;
-
         StartCoroutine(DropedAnimation());
 
     }

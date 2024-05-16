@@ -79,6 +79,9 @@ public class PlayerInventory : InventoryManager, IInputable
                 dropItem.SetDropData(_inventorySlots[_selectedSlotIndex]._myItem, transform);
             }
             
+            
+            Debug.Log($"Передаю {transform.localPosition}");
+            
             // в конце. обнуление инвентаря
             _inventorySlots[_selectedSlotIndex].DropItem();
 

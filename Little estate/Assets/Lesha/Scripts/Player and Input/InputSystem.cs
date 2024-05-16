@@ -1,4 +1,6 @@
- using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
+
 using UnityEngine;
 
 public class InputSystem : MonoBehaviour
@@ -7,6 +9,16 @@ public class InputSystem : MonoBehaviour
     private List<IInputable> _previousInput = new();
 
     public static InputSystem Instance;
+
+
+    public IEnumerator SetPauseInput(float time)
+    {
+        SetTimedInput(null);
+        yield return new WaitForSeconds(time);
+        
+        ReturnInput();
+    }
+    
     
     public InputSystem()
     {
