@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Pool;
 using UnityEngine;
 
@@ -13,7 +10,7 @@ public class PlayerFightController : MonoBehaviour, IInputable
     public bool _isAttacking;
     private bool _canAttack = true;
 
-    private int _combo = 0;
+    private int _combo;
     private void OnEnable()
     {
         InputSystem.Instance.SetInput(this);
@@ -28,7 +25,7 @@ public class PlayerFightController : MonoBehaviour, IInputable
 
     private void Attack()
     {
-        var hitEnemies = Physics.OverlapSphere(_punchPosition.position, 1f);
+        var hitEnemies = Physics.OverlapSphere(_punchPosition.position, 2f);
 
         foreach (var enemy in hitEnemies)
         {
@@ -74,7 +71,7 @@ public class PlayerFightController : MonoBehaviour, IInputable
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_punchPosition.position, 1f);
+        Gizmos.DrawWireSphere(_punchPosition.position, 2f);
     }
     
 }
