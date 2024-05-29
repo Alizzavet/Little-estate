@@ -9,7 +9,9 @@ public class Floor : MonoBehaviour
 
     [SerializeField] private List<Transform> _objectsSpawner;
     [SerializeField] private List<GameObject> _gameObjects;
-
+    
+    [SerializeField] private List<Transform> _enemiesSpawner;
+    [SerializeField] private List<GameObject> _enemies;
     public void SpawnObjects()
     {
         if (_objectsSpawner == null)
@@ -19,7 +21,7 @@ public class Floor : MonoBehaviour
         {
             var spawnChance = Random.Range(1, 5);
 
-            if (spawnChance >= 2)
+            if (spawnChance >= 3)
                 continue;
             
             if (_gameObjects == null)
@@ -31,5 +33,22 @@ public class Floor : MonoBehaviour
             gameobject.transform.position = spawnpos.position;
 
         }
+        foreach (var enemyPos in _enemiesSpawner)
+        {
+            var spawnChance = Random.Range(1, 7);
+
+            if (spawnChance >= 3)
+                continue;
+            
+            if (_gameObjects == null)
+                return;
+            
+            var randomItem = Random.Range(0, _enemies.Count);
+
+            var gameobject = Instantiate(_enemies[randomItem]);
+            gameobject.transform.position = enemyPos.position;
+
+        }
+        
     }
 }
