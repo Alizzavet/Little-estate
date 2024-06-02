@@ -7,19 +7,22 @@ namespace UI
 {
     public class Window : MonoBehaviour
     {
+        private Vector3 _defaultScale;
+        
         public void Show()
         {
-            var defaultScale = transform.localScale;
+            _defaultScale = transform.localScale;
             gameObject.SetActive(true);
             
             transform.localScale = Vector3.zero;
 
-            transform.DOScale(defaultScale, 0.6f).SetEase(Ease.OutFlash).SetAutoKill(true);
+            transform.DOScale(_defaultScale, 0.6f).SetEase(Ease.OutFlash).SetAutoKill(true);
 
         }
 
         public void Hide()
         {
+            transform.localScale = _defaultScale;
             gameObject.SetActive(false);
         }
     }
