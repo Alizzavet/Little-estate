@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1701116545
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -105,8 +105,6 @@ MonoBehaviour:
   _unAvailable:
     serializedVersion: 2
     m_Bits: 320
-  _moveInterval: 0.3
-  _movementStep: 3
 --- !u!65 &8885555608177502402
 BoxCollider:
   m_ObjectHideFlags: 0
